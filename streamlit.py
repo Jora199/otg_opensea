@@ -5,16 +5,24 @@ import os
 from datetime import datetime, timedelta
 
 def load_sales_data():
-    sales_dir = os.path.join(os.path.dirname(__file__), 'data', 'sales')
+    # Изменяем путь к директории с данными
+    sales_dir = os.path.join(os.path.dirname(__file__), '..', 'data', 'sales')
     items = {}
     
+    if not os.path.exists(sales_dir):
+        st.error(f"Directory not found: {sales_dir}")
+        return {}
+        
     for file in os.listdir(sales_dir):
-        if file.endswith('.csv'):
-            df = pd.read_csv(os.path.join(sales_dir, file))
-            if not df.empty:
-                item_name = df['name'].iloc[0]
-                items[item_name] = df
-    
+        try:
+            if file.endswith('.csv'):
+                df = pd.read_csv(os.path.join(sales_dir, file))
+                if not df.empty:
+                    item_name = df['name'].iloc[0]
+                    items[item_name] = df
+        except Exception as e:
+            st.error(f"Error reading file {file}: {str(e)}")
+            
     return items
 
 def main():
