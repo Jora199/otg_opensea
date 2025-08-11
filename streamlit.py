@@ -6,18 +6,20 @@ from datetime import datetime, timedelta
 
 def load_sales_data():
     # Изменяем путь к директории с данными
-    sales_dir = os.path.join(os.path.dirname(__file__), '..', 'data', 'sales')
-    items = {}
+    sales_dir = os.path.join(os.path.dirname(__file__), 'data', 'sales')  # Попробуем прямой путь
+    st.write(f"Trying path: {sales_dir}")  # Отладка
     
     if not os.path.exists(sales_dir):
         st.error(f"Directory not found: {sales_dir}")
-        st.error(f"Current working directory: {os.getcwd()}")  # Для отладки
-        st.error(f"Directory contents: {os.listdir(os.path.dirname(__file__))}")  # Для отладки
+        st.error(f"Current working directory: {os.getcwd()}")
+        st.error(f"Contents of current directory: {os.listdir(os.getcwd())}")
         return {}
         
+    items = {}
     for file in os.listdir(sales_dir):
         try:
             if file.endswith('.csv'):
+                st.write(f"Found CSV file: {file}")  # Отладка
                 df = pd.read_csv(os.path.join(sales_dir, file))
                 if not df.empty:
                     item_name = df['name'].iloc[0]
@@ -25,6 +27,7 @@ def load_sales_data():
         except Exception as e:
             st.error(f"Error reading file {file}: {str(e)}")
             
+    st.write(f"Found items: {list(items.keys())}")  # Отладка
     return items
 
 def main():
@@ -34,15 +37,33 @@ def main():
     # Загрузка данных
     items_data = load_sales_data()
     
+    # Проверка наличия данных
+    if not items_data:
+        st.error("No data available. Please check data directory and CSV files.")
+        st.stop()
+        return
+    
     # Сайдбар с фильтрами
     st.sidebar.header("Filters")
     
     # Выбор предмета
+    items_list = sorted(items_data.keys())
+    if not items_list:
+        st.error("No items found in the data.")
+        st.stop()
+        return
+        
     selected_item = st.sidebar.selectbox(
         "Select Item",
-        options=sorted(items_data.keys()),
+        options=items_list,
         index=0
     )
+    
+    # Проверка выбранного предмета
+    if selected_item is None or selected_item not in items_data:
+        st.error("No item selected or item not found in data.")
+        st.stop()
+        return
     
     # Получаем данные выбранного предмета
     df = items_data[selected_item]
