@@ -5,13 +5,14 @@ import os
 from datetime import datetime, timedelta
 
 def load_sales_data():
-    # Изменяем путь к директории с данными для структуры main/data/sales/
-    sales_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'main', 'data', 'sales')
+    # Изменяем путь к директории с данными
+    sales_dir = os.path.join(os.path.dirname(__file__), '..', 'data', 'sales')
     items = {}
     
     if not os.path.exists(sales_dir):
         st.error(f"Directory not found: {sales_dir}")
-        st.error(f"Current directory: {os.path.dirname(__file__)}")  # Для отладки
+        st.error(f"Current working directory: {os.getcwd()}")  # Для отладки
+        st.error(f"Directory contents: {os.listdir(os.path.dirname(__file__))}")  # Для отладки
         return {}
         
     for file in os.listdir(sales_dir):
