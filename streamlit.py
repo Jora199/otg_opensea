@@ -6,8 +6,7 @@ from datetime import datetime, timedelta
 
 def load_sales_data():
     # Изменяем путь к директории с данными
-    sales_dir = os.path.join(os.path.dirname(__file__), 'data', 'sales')  # Попробуем прямой путь
-    st.write(f"Trying path: {sales_dir}")  # Отладка
+    sales_dir = os.path.join(os.path.dirname(__file__), 'data', 'sales')
     
     if not os.path.exists(sales_dir):
         st.error(f"Directory not found: {sales_dir}")
@@ -19,15 +18,12 @@ def load_sales_data():
     for file in os.listdir(sales_dir):
         try:
             if file.endswith('.csv'):
-                st.write(f"Found CSV file: {file}")  # Отладка
                 df = pd.read_csv(os.path.join(sales_dir, file))
                 if not df.empty:
                     item_name = df['name'].iloc[0]
                     items[item_name] = df
         except Exception as e:
             st.error(f"Error reading file {file}: {str(e)}")
-            
-    st.write(f"Found items: {list(items.keys())}")  # Отладка
     return items
 
 def main():
