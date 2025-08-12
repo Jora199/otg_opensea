@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-28 21:59:59,Do or Die,6460794,55.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6460794
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-28 21:59:59,Do or Die,6460794,55.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6460794,0x3b819ec5759bd023f0fbe46f3a29305cf7ac876d,0x194b5177fde315f3f14d48b5b3b9bcc61daeb57c,0x95ff46d57b2d01f18fe62f1ea72ad9dbe1090305cd9fc7e928d4ae4db123de16

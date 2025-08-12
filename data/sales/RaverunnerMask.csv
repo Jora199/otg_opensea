@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-27 10:40:29,Raverunner Mask,948991,44.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/948991
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-27 10:40:29,Raverunner Mask,948991,44.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/948991,0x7e820f6dac2d82712113c6354f1d8f3b66225dee,0x3138ac1534ed838c4c126384f692ffe4a4376b1c,0x1e1a7ace5ee946eb53d1a46197f9c59666a5b39ff65dcae7b0f49e10011be252

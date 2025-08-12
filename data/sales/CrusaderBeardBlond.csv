@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-24 23:46:24,Crusader Beard - Blond,6748829,100.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6748829
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-24 23:46:24,Crusader Beard - Blond,6748829,100.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6748829,0xbe306f0c1a3dd2026aaf05abc7bfcd29968d94a2,0xd0ce55396cd8277c35b7b17febd06785a7cbfbed,0xc253780b3d543d87b739fc6ee7eff93b7016c9bc91d97bbeef46a28be636c93c

@@ -1,4 +1,4 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-26 01:42:10,Striker Vest,5992067,20.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5992067
-2025-07-27 16:40:37,Striker Vest,6033681,14.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6033681
-2025-07-27 17:52:47,Striker Vest,6033681,15.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6033681
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-26 01:42:10,Striker Vest,5992067,20.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5992067,0xcc3bc6ca7c7ac2f3154b93b6f750583934e28747,0xe3abe73f0fb51ecf8314709eaefd3e60246a2794,0x9aefc86945b78dea2dfb86f3f71ca244498801354105999cea72293c601bae4d
+2025-07-27 16:40:37,Striker Vest,6033681,14.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6033681,0xcc3bc6ca7c7ac2f3154b93b6f750583934e28747,0x5b47cad813d8805d3e2a6acd15e10bdb5bdecdb1,0x24dc81a12404698cb64561cc3d9292e5d9ba92ec42cde556c6c27e19d4886280
+2025-07-27 17:52:47,Striker Vest,6033681,15.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6033681,0x5b47cad813d8805d3e2a6acd15e10bdb5bdecdb1,0xdd7e758206324f9cf278c64113c31fa5bb141843,0x138923b360d18109e462005721bb98778d25dacfbc1a1b5068efabd8e69c0b18

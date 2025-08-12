@@ -1,3 +1,4 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-28 12:00:28,Street Sneakers,5232514,55.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5232514
-2025-08-06 15:46:49,Street Sneakers,7120664,23.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/7120664
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-28 12:00:28,Street Sneakers,5232514,55.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5232514,0xaf82c2e038c1df2f9b9437b756798460b31567ee,0x8f66f0ab962c2bac3cb396d8ec0e0db332ff4c6d,0x3c28b8c88280d8fbc9bc44d5512724d74e3b3c0d807d9035cda419a36182f251
+2025-08-06 15:46:49,Street Sneakers,7120664,23.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/7120664,0x02b83d8a6f77e5f3e417a5cb3e9b6ec9a0c8f46c,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0xf1d7eed904b729537a1494279c4360bec114b68bc1e50377da377ec1b40b0e91
+2025-08-12 03:47:38,Street Sneakers,6738887,21.5,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6738887,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0x52cfca2091c13107a94ccee4f1a1e6e56d15cd53,0x72128f2141c027615a5f7b1d60806b135b882e1a482eeabfdf160d32c1810a2c

@@ -1,6 +1,6 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-26 23:13:16,Boomslang Second Amender,5619834,99.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5619834
-2025-07-27 23:57:08,Boomslang Second Amender,5596825,50.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5596825
-2025-08-01 09:55:11,Boomslang Second Amender,6144240,40.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6144240
-2025-08-02 09:27:00,Boomslang Second Amender,6295895,89.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6295895
-2025-08-06 21:18:51,Boomslang Second Amender,6761875,69.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6761875
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-26 23:13:16,Boomslang Second Amender,5619834,99.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5619834,0xd81180d7f83fdaae549130f7dbe88fede735d1eb,0x9b3f238973b3ed097030e2972f58bc7be142ded5,0x3dfd4688eada4c60fe20f469d04eb3f0aa763282df5427b44e67ae8a9eac5991
+2025-07-27 23:57:08,Boomslang Second Amender,5596825,50.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5596825,0x275991f0111c4dfd8c8f7a3feaee03bfe0383c94,0xe8c05b745cac8bbb018e8fd5409b94622de8cc96,0x44d31d3585f7124b46df1304464a485e3aabd02296968d1218ba2594c12c93d0
+2025-08-01 09:55:11,Boomslang Second Amender,6144240,40.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6144240,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0x2b2ad75bd1678014248b4c43e64f08d8d898c35e,0xbc4d60ec1f84a4a75bb4932e7bcccf0ee168465737596219d676f321cba1a591
+2025-08-02 09:27:00,Boomslang Second Amender,6295895,89.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6295895,0x52ae83a90375986d24351085a910b85c57b92a35,0x3138ac1534ed838c4c126384f692ffe4a4376b1c,0x9728c7c3a6405305f4e0c5159d1aa21310c4d6eeef6e9e006d30b42f2447dd41
+2025-08-06 21:18:51,Boomslang Second Amender,6761875,69.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6761875,0xd855a0ac9d3148790e70f8ce371656083b3a6767,0x62be09ccfa2a4f95fd0987d0625c10aa2a523e19,0xa128201786a2fd7e786652bf344dd390146876f08744d911a78174c2eb99fdb7

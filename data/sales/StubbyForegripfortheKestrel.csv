@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-27 03:35:50,Stubby Foregrip for the Kestrel,6792417,11.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6792417
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-27 03:35:50,Stubby Foregrip for the Kestrel,6792417,11.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6792417,0x08bfea042f02443ed16f9b8e100f7ea66b9d8e3e,0x6f9f35ff49f1c2174db95e6dd8b8bc9592940820,0x58ff10d3764fa1f26c494fd321766dc027e347f29fa966174b0b697a8e93466a

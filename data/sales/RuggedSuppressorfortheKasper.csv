@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-26 03:54:52,Rugged Suppressor for the Kasper,6777651,99.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6777651
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-26 03:54:52,Rugged Suppressor for the Kasper,6777651,99.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6777651,0xa08707bedfde8d7d2f197b3643aaaa9bd733d3c6,0x62d9f82c59358d04afe405884524e4b5cdf4d5ed,0x3e8ed5561c5d8e5c72c4efbc3aa811e5f20890807237253463846bdc55903c55

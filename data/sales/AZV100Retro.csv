@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-05 19:39:26,AZV 100 Retro,3105962,180.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/3105962
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-05 19:39:26,AZV 100 Retro,3105962,180.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/3105962,0xa636821ad243148f9058fc3e0f329f0e2b8695dd,0x6df3466fbe07f49b710b530f2dab6ffe0d40ea77,0x645f89acac7792780ab711b0a1c66b5cd888b30da75a5be749fd0a00aa25fd3d

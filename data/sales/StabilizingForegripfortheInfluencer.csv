@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-11 12:58:09,Stabilizing Foregrip for the Influencer,6389331,20.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6389331
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-11 12:58:09,Stabilizing Foregrip for the Influencer,6389331,20.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6389331,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0xce5dc5d677298fd5bb78bdf0c1a0947da4c71dc4,0x04e67b9418473e605612dd7fb05aea54cc501205e14f666768ccfaccde34e2e7

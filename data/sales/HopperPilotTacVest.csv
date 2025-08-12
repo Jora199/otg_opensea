@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-27 12:37:14,Hopper Pilot Tac Vest,948947,34.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/948947
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-27 12:37:14,Hopper Pilot Tac Vest,948947,34.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/948947,0x7e820f6dac2d82712113c6354f1d8f3b66225dee,0x2660dc35d4552998ab44b67f4177f8085371be48,0x748a28a3d3e3579989f8175407b7204557f236c7487c5cbdf0211f872984f3f2

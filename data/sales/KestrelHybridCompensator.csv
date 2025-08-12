@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-01 09:56:22,Kestrel Hybrid Compensator,6364216,15.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6364216
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-01 09:56:22,Kestrel Hybrid Compensator,6364216,15.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6364216,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0x832d2a3bdac33f9786750025d50de7e66af732d8,0x0d79c6f33d47628536e2e52ff26cdc4d65899781591d1da3ca55d411b3195bd4

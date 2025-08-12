@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-01 14:23:16,Teardrop Wolfcut,6476230,12.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6476230
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-01 14:23:16,Teardrop Wolfcut,6476230,12.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6476230,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0x2c14573de8e085a83798e85713f8d03db1d2d635,0x5dee10b75049e0d4ab950e236fa1f746b6218fff0f8e3050e045488c74499306

@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-06 11:00:00,Major Cracker Jack Jetpack,5810905,268.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5810905
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-06 11:00:00,Major Cracker Jack Jetpack,5810905,268.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5810905,0x6a7d4ccfc63b6f7c3302ca134d3f6d233c0a56ab,0x741c518aeaf0384d4d7bf5065ace8016a6e4bff8,0x99bb4c2a5e8d9f7a829791872a7be4f5c12d948e131cad3ebf11e836a84960f7

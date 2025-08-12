@@ -1,3 +1,3 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-26 17:45:57,Red Predator Lens,6659235,11.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6659235
-2025-08-09 19:30:46,Red Predator Lens,1345904,23.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1345904
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-26 17:45:57,Red Predator Lens,6659235,11.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6659235,0x08bfea042f02443ed16f9b8e100f7ea66b9d8e3e,0xea98a37ce62f2342a3eb0ad9edd9181c383d8958,0x4c4a619f9f06c6a0362a349cbefa1659042ba9bd2c38305f8b88f054607ef79e
+2025-08-09 19:30:46,Red Predator Lens,1345904,23.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1345904,0x463dedf4b71cd7e94d661c359818f9cd2071991b,0xf847929997dbf09de400800a3cc1df6acbdd4552,0x271536edb644b9a19cf567af76a218388d66340f7c7610683b71545792ba0af4

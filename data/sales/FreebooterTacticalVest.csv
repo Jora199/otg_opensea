@@ -1,4 +1,4 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-07 15:30:43,Freebooter Tactical Vest,6613852,24.75,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6613852
-2025-08-07 17:37:32,Freebooter Tactical Vest,1539381,24.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1539381
-2025-08-09 21:20:37,Freebooter Tactical Vest,6977302,24.9,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6977302
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-07 15:30:43,Freebooter Tactical Vest,6613852,24.75,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6613852,0x7e820f6dac2d82712113c6354f1d8f3b66225dee,0x34c92ca44f4884f1e2ee722026bb95a8774f5e89,0x047cff1a01355399955fa8f5a58901a058e6d11617b64f3335b91d0ea6ba1434
+2025-08-07 17:37:32,Freebooter Tactical Vest,1539381,24.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1539381,0x71625fa21c981f1bc8cf840eda2b394c7732c688,0x88c2627646767cd4bfb6d96e2bb5ddb40e52343f,0xde56356b744a64ba2e89812e8fc9ed25e57d5552ec9659a4844702954c5a3573
+2025-08-09 21:20:37,Freebooter Tactical Vest,6977302,24.9,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6977302,0xf847929997dbf09de400800a3cc1df6acbdd4552,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0x8ff4ded5bf1f7601343e1e88ab18204c787ad2efd0bff491b4197c959453ca5c

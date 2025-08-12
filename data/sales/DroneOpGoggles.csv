@@ -1,4 +1,4 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-25 08:06:53,Drone Op Goggles,6481757,40.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6481757
-2025-07-28 03:30:00,Drone Op Goggles,6460689,55.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6460689
-2025-08-02 02:49:05,Drone Op Goggles,6458932,97.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6458932
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-25 08:06:53,Drone Op Goggles,6481757,40.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6481757,0xcc3bc6ca7c7ac2f3154b93b6f750583934e28747,0x63adc4aa7f0d8129f079b17ef35525b76a533bb3,0xf78eb63a2280fb3dd746196b8dd5c90dd02d22bfa122b8ec27334a7ed4444d3f
+2025-07-28 03:30:00,Drone Op Goggles,6460689,55.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6460689,0x3b819ec5759bd023f0fbe46f3a29305cf7ac876d,0xed149c270f84898601a79f7682f3357ee3475675,0xd59a9238c12f346990ff0f998a5adaaf38f822c6e1b32b627d8b04d4ff13734b
+2025-08-02 02:49:05,Drone Op Goggles,6458932,97.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6458932,0x463dedf4b71cd7e94d661c359818f9cd2071991b,0x06c8485604bbb06c8ae2e5b8e2f2b649671c0dc5,0xa0b10546e4a4e5b57d117f524e26500d7e148559695fd65c580fac49c5a59aac

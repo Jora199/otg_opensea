@@ -1,2 +1,3 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-01 01:35:46,Volia Skin for the Osprey,6460808,55.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6460808
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-01 01:35:46,Volia Skin for the Osprey,6460808,55.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6460808,0x3b819ec5759bd023f0fbe46f3a29305cf7ac876d,0x93e66a85398e1c43dc4670ccdb78e6157af83469,0x758d1b856b247b7cb2e953a26c0a93d91e03d25e978536103c5ee9acf55f6e37
+2025-08-11 17:44:28,Volia Skin for the Osprey,6690988,30.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6690988,0x79bad60aa4d3b72a59318feaf6f8a950ea4f9862,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0xc18935211f60d58b3bbae187af62a223734c0e2538ef73c0009414de87cea5cc

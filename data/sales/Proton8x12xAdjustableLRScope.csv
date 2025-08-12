@@ -1,3 +1,3 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-28 22:26:31,Proton 8x - 12x Adjustable LR Scope,6210737,45.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6210737
-2025-08-05 17:05:48,Proton 8x - 12x Adjustable LR Scope,1760639,100.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1760639
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-28 22:26:31,Proton 8x - 12x Adjustable LR Scope,6210737,45.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6210737,0x979323659c941d446e48b5c1c51ddb51c0f9b84b,0x194b5177fde315f3f14d48b5b3b9bcc61daeb57c,0x5c438fba0a773b8e0f5adae36e8dd3bb22bf01deefb266c32275e0bd14da205f
+2025-08-05 17:05:48,Proton 8x - 12x Adjustable LR Scope,1760639,100.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1760639,0xaf82c2e038c1df2f9b9437b756798460b31567ee,0xce5dc5d677298fd5bb78bdf0c1a0947da4c71dc4,0x4e680d572b6fad69b20a8c2bca5bf572932e737bc510cd6af853957626d13f08

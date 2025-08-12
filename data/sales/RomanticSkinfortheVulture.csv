@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-07 11:41:22,Romantic Skin for the Vulture,6977322,49.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6977322
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-07 11:41:22,Romantic Skin for the Vulture,6977322,49.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6977322,0xd6f900b18a8362ed4becaceb031abd245ac89a68,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0x88f33bf8c0ba1c8cac3d3a4a6b9f465e9ccdc09446f75d50479c4fc493cda874

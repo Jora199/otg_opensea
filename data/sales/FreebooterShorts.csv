@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-08 18:32:53,Freebooter Shorts,2892446,40.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2892446
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-08 18:32:53,Freebooter Shorts,2892446,40.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2892446,0xab58e2446b6c7aa26a332bd5e4a46941dfdd9890,0x3102d08a397866308535fd6dbba1111f10f374b8,0x36ca915164cb858e229be71e17f6edc1f06b782256666e6d8dd14fac5414182f

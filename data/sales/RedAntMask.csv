@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-25 04:26:54,Red Ant Mask,6584883,49.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6584883
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-25 04:26:54,Red Ant Mask,6584883,49.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6584883,0x9a238890e942fcec03493e6746958476be869189,0xa357fe4270bb88a39c099d33f429b4ad76de21cc,0xfc45f805d93e6a612b3408b24c3df78fca8f6bb2982229563bbf710e8972dc15

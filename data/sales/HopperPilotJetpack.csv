@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-06 22:52:29,Hopper Pilot Jetpack,611763,100.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/611763
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-06 22:52:29,Hopper Pilot Jetpack,611763,100.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/611763,0x06c8485604bbb06c8ae2e5b8e2f2b649671c0dc5,0x93e66a85398e1c43dc4670ccdb78e6157af83469,0x88d0982712d4b7bacafc4d245ef0a6a30cd533dd57ab7e80aff971302d62a066

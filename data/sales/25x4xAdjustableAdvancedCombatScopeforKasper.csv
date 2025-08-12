@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-06 13:34:34,2.5x - 4x Adjustable Advanced Combat Scope for Kasper,7117739,75.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/7117739
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-06 13:34:34,2.5x - 4x Adjustable Advanced Combat Scope for Kasper,7117739,75.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/7117739,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0xce5dc5d677298fd5bb78bdf0c1a0947da4c71dc4,0x8e27454ee88215a5fa3000c25bfc78a0bed562c7405986890fc12820114d3c12

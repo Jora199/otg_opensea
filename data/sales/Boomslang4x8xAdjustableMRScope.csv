@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-27 12:51:32,Boomslang 4x - 8x Adjustable MR Scope,5466495,50.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5466495
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-27 12:51:32,Boomslang 4x - 8x Adjustable MR Scope,5466495,50.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5466495,0x52ae83a90375986d24351085a910b85c57b92a35,0x9ce7da479710316b7fc3a6eaa6b7a93cdde538cf,0x2f8e8aa4cbfee4ef7ba716a37398520d09fb919ed0477c694ce73fdea13eb24e

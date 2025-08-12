@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-25 02:45:03,Bagged and Tagged,2013918,190.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2013918
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-25 02:45:03,Bagged and Tagged,2013918,190.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2013918,0xdd856b75701b7f79a2554e3fcc70603ef6feaa8b,0x4c9b7aae5f1cf5635a8cd59f033ba26834ddd2a8,0x346b002f55eb4af5ae65b5cab557b22a7d5645822927f3982ddae31abe32173f

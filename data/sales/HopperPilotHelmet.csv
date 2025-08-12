@@ -1,4 +1,4 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-27 10:46:49,Hopper Pilot Helmet,1996817,500.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1996817
-2025-07-29 02:16:06,Hopper Pilot Helmet,765903,174.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/765903
-2025-07-31 03:54:01,Hopper Pilot Helmet,2748503,177.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2748503
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-27 10:46:49,Hopper Pilot Helmet,1996817,500.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1996817,0x06c8485604bbb06c8ae2e5b8e2f2b649671c0dc5,0x3138ac1534ed838c4c126384f692ffe4a4376b1c,0xe3d877ef263ea2258a3bc0083d1f8ba08cc18c6763223c70e0e35d7a6422f5af
+2025-07-29 02:16:06,Hopper Pilot Helmet,765903,174.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/765903,0x7e820f6dac2d82712113c6354f1d8f3b66225dee,0x741c518aeaf0384d4d7bf5065ace8016a6e4bff8,0x20324b9630d9d2021beb6f0b86229d6ba0332a0b99052853c4ea3c3b7b1036f1
+2025-07-31 03:54:01,Hopper Pilot Helmet,2748503,177.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2748503,0xf044b361ad8eadffa19c5a639946563de113173c,0x71f60cecdb60be5ec2d081ebc1fd7abab73a01d6,0xb4e0033a74c60a9b91c73518d1d68c403933cda9d546303fc179be1942cbcf9e

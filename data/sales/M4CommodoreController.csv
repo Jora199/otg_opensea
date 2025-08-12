@@ -1,5 +1,5 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-26 22:37:40,M4 Commodore Controller,5619864,99.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5619864
-2025-07-28 06:12:45,M4 Commodore Controller,6753740,50.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6753740
-2025-07-31 01:27:42,M4 Commodore Controller,5749493,79.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5749493
-2025-08-05 16:45:29,M4 Commodore Controller,3258719,100.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/3258719
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-26 22:37:40,M4 Commodore Controller,5619864,99.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5619864,0xd81180d7f83fdaae549130f7dbe88fede735d1eb,0x9b3f238973b3ed097030e2972f58bc7be142ded5,0x929115c299ab2277dfcf39bad0f3028c07d214cc9bc7cad82b3fbbc4ce08947b
+2025-07-28 06:12:45,M4 Commodore Controller,6753740,50.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6753740,0x979323659c941d446e48b5c1c51ddb51c0f9b84b,0x22ffa8cd55dde382dbd73546bd3ff69e85957d87,0x222b3db98ff522e6a210c818537c96feda77e4f54056fbe0b2489b86843e1b09
+2025-07-31 01:27:42,M4 Commodore Controller,5749493,79.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5749493,0x52ae83a90375986d24351085a910b85c57b92a35,0x9fe3ca761ccae9ecc14671b0c6d21a946554c2db,0x5dcb331979e7cf81e79ff6b25203b8e7848a79dca1234bc1d9673b68e1a1c027
+2025-08-05 16:45:29,M4 Commodore Controller,3258719,100.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/3258719,0x06c8485604bbb06c8ae2e5b8e2f2b649671c0dc5,0xce5dc5d677298fd5bb78bdf0c1a0947da4c71dc4,0xaa1e34f1060fcc74722c3188049cfa9910ab19674e3c94641578e915b86a2ae6

@@ -1,3 +1,3 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-26 12:46:21,Jammer Helmet,6624917,11.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6624917
-2025-07-27 15:57:32,Jammer Helmet,6624917,20.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6624917
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-26 12:46:21,Jammer Helmet,6624917,11.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6624917,0x08bfea042f02443ed16f9b8e100f7ea66b9d8e3e,0x2b2ad75bd1678014248b4c43e64f08d8d898c35e,0x182e2df67bc40dd867ffdc6b97ba1080b1664e6dbb1d2d3670fe9d0a6b9b9c37
+2025-07-27 15:57:32,Jammer Helmet,6624917,20.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6624917,0x2b2ad75bd1678014248b4c43e64f08d8d898c35e,0xd81180d7f83fdaae549130f7dbe88fede735d1eb,0xc0a910f8cda8ba2f911580e19c2155d7972d95a9fa8d5be724c8d30326ae9802

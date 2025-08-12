@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-01 12:07:06,Mavinga Tactical Foregrip,6144256,12.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6144256
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-01 12:07:06,Mavinga Tactical Foregrip,6144256,12.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6144256,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0x41ca1eb8370a9d9985d7fb89e28bea42aecc969d,0x80d9ad068f193707cde41b1a5f796cb7e8e810b783924ce60f554fa66c3fe0b3

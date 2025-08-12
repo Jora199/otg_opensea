@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-27 17:05:26,Hawk Slim Foregrip,2247534,15.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2247534
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-27 17:05:26,Hawk Slim Foregrip,2247534,15.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2247534,0x275991f0111c4dfd8c8f7a3feaee03bfe0383c94,0x14fc137ff40044b42456b8ce9deeff73fb8b4308,0x58d68e60bcff361e7574630f053e3fa68adb0d2b596c730d1f28caf19da664f2

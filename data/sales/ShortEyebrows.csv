@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-03 12:45:40,Short Eyebrows,1296258,33.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1296258
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-03 12:45:40,Short Eyebrows,1296258,33.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1296258,0x02b83d8a6f77e5f3e417a5cb3e9b6ec9a0c8f46c,0x8b6647f103df008b260ce5ea33caa4c2f49a9d2b,0x27b9dcd70013c65439a88b0253656a5acfff5aaa3bae1658430a51ca6c8ebbdd

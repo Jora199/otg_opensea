@@ -1,3 +1,3 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-09 14:49:15,Influencer,752171,24.97,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/752171
-2025-08-10 18:24:32,Influencer,759779,21.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/759779
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-09 14:49:15,Influencer,752171,24.97,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/752171,0xae418bf1b299039adcaf2db8cf9ccca599965005,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0xa890f8d9cf6e1583d46f2272a03ed32122a4f5895b8d0b299ea16d1bd276e6b9
+2025-08-10 18:24:32,Influencer,759779,21.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/759779,0xce5dc5d677298fd5bb78bdf0c1a0947da4c71dc4,0xf847929997dbf09de400800a3cc1df6acbdd4552,0xa40ed5d92c10e645fafc247f7a54cad5b79d89a679a53d4e794ddaa1818492cd

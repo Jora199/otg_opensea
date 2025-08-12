@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-25 23:29:50,Squid Skin for the Kestrel,6781098,49.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6781098
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-25 23:29:50,Squid Skin for the Kestrel,6781098,49.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6781098,0x8960c56dc9b01abe469de6108518f50b4e02d6d3,0xde4da1f9e583973a87bbafb800490c16dff73859,0xda9b3299ba7edb068ac444da4559e2a9df34a10fe3d23d117d651e4e75b433d9

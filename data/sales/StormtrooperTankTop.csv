@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-30 07:07:15,Stormtrooper Tank Top,1292735,41.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1292735
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-30 07:07:15,Stormtrooper Tank Top,1292735,41.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1292735,0x02b83d8a6f77e5f3e417a5cb3e9b6ec9a0c8f46c,0x5dc9d1c5be13b48de86e0a6b18aaece4b75d32c4,0x219299183d4eb0287f67d0db7f1d71fa2a24075890cffe68f831e182957d4c74

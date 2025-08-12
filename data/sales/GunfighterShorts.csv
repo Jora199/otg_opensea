@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-29 08:25:56,Gunfighter Shorts,4611284,28.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/4611284
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-29 08:25:56,Gunfighter Shorts,4611284,28.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/4611284,0x7168af809b653152c3fafc9d92e901f34ce1a890,0x4cb344f6da6e6d732d93507ac316ee4b080c7fec,0xfc07b6e3a9c1381c55af09faf4b99bb7dcced8b3a7547a73b8df62f7b9d7cc44

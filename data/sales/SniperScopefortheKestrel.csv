@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-08-01 23:41:03,Sniper Scope for the Kestrel,7010363,9.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/7010363
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-08-01 23:41:03,Sniper Scope for the Kestrel,7010363,9.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/7010363,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0x94d42d802fbd9a17f64fc2a4627fc4900a67375b,0xfa68e96526ed9d8671bf0a6e5a87316f22d1bc72933a9c2f79cf59957c5e21af

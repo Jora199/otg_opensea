@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-25 06:46:55,Lazer,2114050,79.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2114050
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-25 06:46:55,Lazer,2114050,79.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2114050,0x9a238890e942fcec03493e6746958476be869189,0x723b7c0c6b9ad52021736a4b3a56b9d25fd55da4,0xa8718215c474ac5b2ae26d33e8b7ed53f862adb9e099fe65ff085445c848230b

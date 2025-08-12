@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url
-2025-07-27 19:46:28, Pink Fury Visor,1014309,49.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1014309
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
+2025-07-27 19:46:28, Pink Fury Visor,1014309,49.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1014309,0x91109b6dbf893f28b3623ecd16f634a1f8d5b6f5,0xd46be69b81e455b9b637d9997f2d7e3af40e8c72,0x15856e8e7b921014f4b8738d0eedd17dc09f6c6802fe8efefb6f0f091b278b36
