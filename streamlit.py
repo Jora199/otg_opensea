@@ -47,6 +47,7 @@ def format_gunzscan_link(tx_hash):
     return f"https://gunzscan.io/tx/{tx_hash}"
 
 def main():
+    os.environ['STREAMLIT_SERVER_FILE_WATCHER_TYPE'] = 'none'
     st.set_page_config(page_title="GunZ Market Analysis", page_icon="📊", layout="wide")
     
     st.markdown("""
