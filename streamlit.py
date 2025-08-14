@@ -17,7 +17,6 @@ def load_current_price():
 
 
 def load_sales_data():
-    # Изменен путь к директории с данными
     sales_dir = os.path.join(os.path.dirname(__file__), 'data', 'sales')
     
     if not os.path.exists(sales_dir):
@@ -359,7 +358,7 @@ def main():
             }).reset_index()
             daily_volumes.columns = ['date', 'volume_gun', 'count']
             
-            volume_dates = [datetime.combine(date, datetime.min.time()) for date in daily_volumes['date']]
+            volume_dates = [datetime.combine(date, datetime.min.time()) + timedelta(hours=12) for date in daily_volumes['date']]
             
             volume_hover_template = "<br>".join([
                 "Date: %{x}",
@@ -374,7 +373,7 @@ def main():
             
             fig.add_trace(go.Bar(
                 x=volume_dates,
-                y=y_values,  # теперь используем объем вместо количества транзакций
+                y=y_values,
                 name='Volume',
                 marker_color='rgba(139,0,0,0.3)',
                 yaxis='y2',
