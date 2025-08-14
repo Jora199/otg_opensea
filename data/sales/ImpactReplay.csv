@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-07-31 01:22:19,Impact Replay,1350154,33.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1350154,0xe5640b09eaad75a49782de1a50ecee1a0f803f8c,0x8b16bd42e4f1ff204f4e563c877d781503999f33,0x2828ca25e71b3ba8b23deb757034fce4dcdd1c09a784dda28a06f7baba89b1e1
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-07-31 01:22:19,Impact Replay,1350154,33.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1350154,0xe5640b09eaad75a49782de1a50ecee1a0f803f8c,0x8b16bd42e4f1ff204f4e563c877d781503999f33,0x2828ca25e71b3ba8b23deb757034fce4dcdd1c09a784dda28a06f7baba89b1e1,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/CustomizationItemTemplate_CIT_Emote_41A_CrashTest_hd.png

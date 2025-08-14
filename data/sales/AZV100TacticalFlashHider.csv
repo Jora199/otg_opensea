@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-08-11 17:46:28,AZV 100 Tactical Flash Hider,7108063,18.98,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/7108063,0xb4b66811d5020a1301e4c09c4c5bda18543867d7,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0x2b63a04dda03be08b47f19dc96270bdc66c436af257783038e2fab1749025e82
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-11 17:46:28,AZV 100 Tactical Flash Hider,7108063,18.98,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/7108063,0xb4b66811d5020a1301e4c09c4c5bda18543867d7,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0x2b63a04dda03be08b47f19dc96270bdc66c436af257783038e2fab1749025e82,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/WeaponAttachment_DA_WA_SMG01_MZL_FLH_01_hd.png

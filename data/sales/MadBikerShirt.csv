@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-08-05 17:03:58,Mad Biker Shirt,1637967,80.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1637967,0x275991f0111c4dfd8c8f7a3feaee03bfe0383c94,0xce5dc5d677298fd5bb78bdf0c1a0947da4c71dc4,0x48be004993bcdbdadb299006e64971d9c48111593750c0e743d80ba1fba3dd58
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-05 17:03:58,Mad Biker Shirt,1637967,80.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1637967,0x275991f0111c4dfd8c8f7a3feaee03bfe0383c94,0xce5dc5d677298fd5bb78bdf0c1a0947da4c71dc4,0x48be004993bcdbdadb299006e64971d9c48111593750c0e743d80ba1fba3dd58,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/CustomizationItemTemplate_CIT_Zero4Grant_Shirt_Biker_14A_hd.png

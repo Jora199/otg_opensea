@@ -1,3 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-07-28 21:44:48,Kite Adaptive Grip,6460611,30.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6460611,0x3b819ec5759bd023f0fbe46f3a29305cf7ac876d,0x3054e1986fe5faa920cfae137f711f66f82cde07,0x3b860415c67251696ab882ec1d8ff64e36dd3818ac76c1091dc376e5fb459d9f
-2025-08-01 14:30:31,Kite Adaptive Grip,6760658,12.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6760658,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0xb621de45e670274ca1c77d15f890129c6621401c,0x8a786b4f7af9dbe6a9c2e05d0a655fd15c5470c0885c4577406935951786a7f8
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-01 14:30:31,Kite Adaptive Grip,6760658,12.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6760658,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0xb621de45e670274ca1c77d15f890129c6621401c,0x8a786b4f7af9dbe6a9c2e05d0a655fd15c5470c0885c4577406935951786a7f8,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/WeaponAttachment_DA_WA_SMG03_GRP_S04_hd.png

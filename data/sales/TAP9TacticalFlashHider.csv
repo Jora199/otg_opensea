@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-07-31 21:49:12,TAP9 Tactical Flash Hider,6964557,32.9,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6964557,0x7168af809b653152c3fafc9d92e901f34ce1a890,0x8ed17f51028338b89f697f5940a03197bfebdea7,0xb69334efb38b7f691475c5b8f0e87cb844229c5e75d41f643fa7cf746dd38f29
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-07-31 21:49:12,TAP9 Tactical Flash Hider,6964557,32.9,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6964557,0x7168af809b653152c3fafc9d92e901f34ce1a890,0x8ed17f51028338b89f697f5940a03197bfebdea7,0xb69334efb38b7f691475c5b8f0e87cb844229c5e75d41f643fa7cf746dd38f29,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/WeaponAttachment_DA_WA_SA01_MZL_FLH_01_hd.png

@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-08-07 03:43:01,Blue Hawk Skin,7120735,24.47,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/7120735,0xae418bf1b299039adcaf2db8cf9ccca599965005,0xefd463104fc7160d925143d09807f48c24745c0f,0x28772b1c44c34d7641563f675e471938cd1ef53dca1c26249c65db1285caa8c5
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-07 03:43:01,Blue Hawk Skin,7120735,24.47,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/7120735,0xae418bf1b299039adcaf2db8cf9ccca599965005,0xefd463104fc7160d925143d09807f48c24745c0f,0x28772b1c44c34d7641563f675e471938cd1ef53dca1c26249c65db1285caa8c5,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/WeaponSkin_DA_LMG01_Skin_C01_R01_hd.png

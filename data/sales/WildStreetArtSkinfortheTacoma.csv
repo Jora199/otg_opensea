@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-07-29 18:47:48,Wild Street Art Skin for the Tacoma,4557394,50.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/4557394,0x7168af809b653152c3fafc9d92e901f34ce1a890,0x019ed608dd806b80193942f2a960e7ac8abb2ee3,0x6998a17641f8790098ccd71c13c5796a99bc0b5b95d8c4c4233af65311273cd9
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-07-29 18:47:48,Wild Street Art Skin for the Tacoma,4557394,50.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/4557394,0x7168af809b653152c3fafc9d92e901f34ce1a890,0x019ed608dd806b80193942f2a960e7ac8abb2ee3,0x6998a17641f8790098ccd71c13c5796a99bc0b5b95d8c4c4233af65311273cd9,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/WeaponSkin_DA_SMG02_Skin_Image_09_R03_hd.png

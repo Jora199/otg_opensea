@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-08-05 00:59:40,Keep 'em out,2751,66.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2751,0xf044b361ad8eadffa19c5a639946563de113173c,0x2192737978e88698ca0fa55b5c6a699582c83135,0x7d59474b13d6c9fdb38b22d7c854816aafca08aaec5ee99f62bcf43858c0a59c
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-05 00:59:40,Keep 'em out,2751,66.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2751,0xf044b361ad8eadffa19c5a639946563de113173c,0x2192737978e88698ca0fa55b5c6a699582c83135,0x7d59474b13d6c9fdb38b22d7c854816aafca08aaec5ee99f62bcf43858c0a59c,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/CustomizationItemTemplate_CIT_Emote_RightWing_19A_hd.png

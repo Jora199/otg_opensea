@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-08-07 03:43:38,Red Proton Skin,1292496,25.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1292496,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0xefd463104fc7160d925143d09807f48c24745c0f,0x3e18d83357c613a971e84f699e18d24fbeceaeed98e845a435873b4b090615f8
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-07 03:43:38,Red Proton Skin,1292496,25.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1292496,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0xefd463104fc7160d925143d09807f48c24745c0f,0x3e18d83357c613a971e84f699e18d24fbeceaeed98e845a435873b4b090615f8,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/WeaponSkin_DA_MR01_Skin_C03_R01_hd.png

@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-08-06 10:35:52,M4 Commodore 1.2x Mini Reflex Sight,1346566,24.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1346566,0x463dedf4b71cd7e94d661c359818f9cd2071991b,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0x314a910b41616f790aaa4b35383b30e8a8950c2f6dc151ef1a0ad98ef30e765a
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-06 10:35:52,M4 Commodore 1.2x Mini Reflex Sight,1346566,24.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1346566,0x463dedf4b71cd7e94d661c359818f9cd2071991b,0x754d3b1cf7465018824e3fd4e198aca40c1d5f23,0x314a910b41616f790aaa4b35383b30e8a8950c2f6dc151ef1a0ad98ef30e765a,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/WeaponAttachment_DA_WA_AR04_SGT_REF_01_hd.png

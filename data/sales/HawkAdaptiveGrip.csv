@@ -1,3 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-07-28 14:12:06,Hawk Adaptive Grip,2247568,20.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/2247568,0x275991f0111c4dfd8c8f7a3feaee03bfe0383c94,0x9dbad87bfd2375e022456bb658db3f43d5eae6d9,0xf0b3da89518e2a729dd7ee38efb07d7fc271926420a675a53f0ecd4d963194d9
-2025-07-30 06:56:48,Hawk Adaptive Grip,1292705,41.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1292705,0x02b83d8a6f77e5f3e417a5cb3e9b6ec9a0c8f46c,0xc57c590e6eab0364c193c54741a888616c4c48ca,0x5f8332640d8ff4a0c18833c95191b3bcabf149086939723a6977d74f827ea1f2
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-07-30 06:56:48,Hawk Adaptive Grip,1292705,41.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1292705,0x02b83d8a6f77e5f3e417a5cb3e9b6ec9a0c8f46c,0xc57c590e6eab0364c193c54741a888616c4c48ca,0x5f8332640d8ff4a0c18833c95191b3bcabf149086939723a6977d74f827ea1f2,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/WeaponAttachment_DA_WA_LMG01_GRP_S04_hd.png

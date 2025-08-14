@@ -1,3 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-07-26 12:25:20,Kasper,6658892,11.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6658892,0x08bfea042f02443ed16f9b8e100f7ea66b9d8e3e,0xee763936fcbdead33c602d6a04855f18b1905405,0x134efc158a5fe564881b4dddb8f326987af7699a98f4b984e2c405f89b5a99c4
-2025-08-03 01:25:15,Kasper,1347302,21.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1347302,0x6a7d4ccfc63b6f7c3302ca134d3f6d233c0a56ab,0xff164153607da61329bc12778ca8ac1ede5450f3,0x36c4449368b651f6bf18f0d75dc734aecfab95f2b72b8eaa1e46540c04422c75
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-03 01:25:15,Kasper,1347302,21.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1347302,0x6a7d4ccfc63b6f7c3302ca134d3f6d233c0a56ab,0xff164153607da61329bc12778ca8ac1ede5450f3,0x36c4449368b651f6bf18f0d75dc734aecfab95f2b72b8eaa1e46540c04422c75,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/Weapon_Weapon_AR02_S01_Common_hd.png

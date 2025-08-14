@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-07-29 03:07:53,Enforcer Shorts,897132,60.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/897132,0x78469dbe390cf601289655ec1d197b35e52c7ca7,0x3138ac1534ed838c4c126384f692ffe4a4376b1c,0x39effa66314b06abbb9143898d677a29b8afff7467edd799d56c720774cd9a42
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-07-29 03:07:53,Enforcer Shorts,897132,60.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/897132,0x78469dbe390cf601289655ec1d197b35e52c7ca7,0x3138ac1534ed838c4c126384f692ffe4a4376b1c,0x39effa66314b06abbb9143898d677a29b8afff7467edd799d56c720774cd9a42,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/CustomizationItemTemplate_CIT_Cascadia3_Legwear_Shorts_10A_hd.png

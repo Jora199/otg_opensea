@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-08-01 07:42:42,Kestrel Lightweight Barrel,6362303,10.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6362303,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0xae418bf1b299039adcaf2db8cf9ccca599965005,0x86d8969921b5521ce7fa84ef0862a0fb6f0e180bbdefcb29c364247b2458b07a
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-01 07:42:42,Kestrel Lightweight Barrel,6362303,10.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6362303,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0xae418bf1b299039adcaf2db8cf9ccca599965005,0x86d8969921b5521ce7fa84ef0862a0fb6f0e180bbdefcb29c364247b2458b07a,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/WeaponAttachment_DA_WA_SR01_BRL_S02_hd.png

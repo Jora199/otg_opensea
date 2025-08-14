@@ -1,3 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-07-28 04:13:02,"""Silence"" Jetpack",5252259,125.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5252259,0xbe306f0c1a3dd2026aaf05abc7bfcd29968d94a2,0xc45c981ac113ad0ad94640a9d3f45ff188e07a97,0x61f2fa85f4f8349eb5ab6d7d70febe9a824c1c0a6a49570c3ec0353ab2cbb544
-2025-08-01 17:30:34,"""Silence"" Jetpack",6760651,14.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6760651,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0x2d94ba99c06a6a4a4571f7918e4af161b9255115,0xa7e356475b715b9b077f4add9619dbbc2ee627b9804d75f96d53389fa83bf6d6
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-01 17:30:34,"""Silence"" Jetpack",6760651,14.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6760651,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0x2d94ba99c06a6a4a4571f7918e4af161b9255115,0xa7e356475b715b9b077f4add9619dbbc2ee627b9804d75f96d53389fa83bf6d6,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/CustomizationItemTemplate_CIT_Jetpack_AntiCheat_52A_hd.png

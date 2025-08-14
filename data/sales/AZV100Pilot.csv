@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-08-09 06:04:39,AZV 100 Pilot,1041116,90.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1041116,0x06c8485604bbb06c8ae2e5b8e2f2b649671c0dc5,0x93e66a85398e1c43dc4670ccdb78e6157af83469,0x1d7f5230eefefc09749d11c65639cbd625333ee5496540a0e5099c0c17d61ade
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-09 06:04:39,AZV 100 Pilot,1041116,90.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/1041116,0x06c8485604bbb06c8ae2e5b8e2f2b649671c0dc5,0x93e66a85398e1c43dc4670ccdb78e6157af83469,0x1d7f5230eefefc09749d11c65639cbd625333ee5496540a0e5099c0c17d61ade,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/Weapon_Weapon_SMG01_V_27A_hd.png

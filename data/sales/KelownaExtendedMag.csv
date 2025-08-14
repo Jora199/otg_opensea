@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-08-02 13:22:18,Kelowna Extended Mag,5215103,19.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5215103,0xf8e0dd4615f51800755f04278b4298389be23282,0x2c9075dfedd93467fcf3e04699c544833005acd0,0x399da9fd87668c9627cf63ee17aaa9f04c52cd58b5b36bcca14f9784f7186401
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-02 13:22:18,Kelowna Extended Mag,5215103,19.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/5215103,0xf8e0dd4615f51800755f04278b4298389be23282,0x2c9075dfedd93467fcf3e04699c544833005acd0,0x399da9fd87668c9627cf63ee17aaa9f04c52cd58b5b36bcca14f9784f7186401,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/WeaponAttachment_DA_WA_SA03_MAG_EXT_01_hd.png

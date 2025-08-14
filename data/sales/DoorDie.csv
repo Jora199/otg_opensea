@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-07-28 21:59:59,Do or Die,6460794,55.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6460794,0x3b819ec5759bd023f0fbe46f3a29305cf7ac876d,0x194b5177fde315f3f14d48b5b3b9bcc61daeb57c,0x95ff46d57b2d01f18fe62f1ea72ad9dbe1090305cd9fc7e928d4ae4db123de16
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-13 19:04:31,Do or Die,6632352,129.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6632352,0x463dedf4b71cd7e94d661c359818f9cd2071991b,0x1c6e7b051f665fcfcb5459194dc75f3578b9dd30,0x595d6ccf2a425cfa95aadc8a1f99cd6fecb118dafb0be3d2ae2eab4bfffc96e8,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/CustomizationItemTemplate_CIT_Music_CombatDJ_PH17_hd.png

@@ -1,2 +1,2 @@
-sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash
-2025-08-02 02:33:09,Big Ego Skin for the Kelowna,6390156,9.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6390156,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0x3eaeb0c5b7c6a9011aa4983ef1301855a6f9e8d2,0xe664b0402929a05ebfd460890216adb1374bc70cec78c1af0ef541767feef135
+sale_date,name,token_id,price_gun,item_url,seller,buyer,transaction_hash,image_url
+2025-08-02 02:33:09,Big Ego Skin for the Kelowna,6390156,9.0,https://opensea.io/assets/gunzilla/0x9ed98e159be43a8d42b64053831fcae5e4d7d271/6390156,0xef4e7d18b0ce2c1c1f5f83385d1d7aee6de57e8f,0x3eaeb0c5b7c6a9011aa4983ef1301855a6f9e8d2,0xe664b0402929a05ebfd460890216adb1374bc70cec78c1af0ef541767feef135,https://cdne-g01-livepc-wu-itemsthumbnails.azureedge.net/ExportedAssets/WeaponSkin_WeaponSkin_SA03_DigitalCamo_03_hd.png
