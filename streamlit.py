@@ -6,17 +6,26 @@ import os
 from datetime import datetime, timedelta
 import numpy as np
 
+def get_rarity_style(rarity):
+    rarity_colors = {
+        'Common': ('#ffffff', 'common'),
+        'Uncommon': ('#1eff00', 'uncommon'),
+        'Rare': ('#0070dd', 'rare'),
+        'Epic': ('#a335ee', 'epic'),
+        'Legendary': ('#ff8000', 'legendary')
+    }
+    return rarity_colors.get(rarity, ('#ffffff', 'common'))
+
 def load_current_price():
     price_path = os.path.join(os.path.dirname(__file__), 'data', 'current_price.csv')
-    
     try:
         with open(price_path, 'r') as f:
             return float(f.read().strip())
     except:
         return 0.03
 
-
 def load_sales_data():
+    # Изменен путь к директории с данными
     sales_dir = os.path.join(os.path.dirname(__file__), 'data', 'sales')
     
     if not os.path.exists(sales_dir):
@@ -32,7 +41,11 @@ def load_sales_data():
                 df = pd.read_csv(os.path.join(sales_dir, file))
                 if not df.empty:
                     item_name = df['name'].iloc[0]
-                    items[item_name] = df
+                    rarity = df['rarity'].iloc[0] if 'rarity' in df.columns else None
+                    items[item_name] = {
+                        'data': df,
+                        'rarity': rarity
+                    }
         except Exception as e:
             st.error(f"Error reading file {file}: {str(e)}")
     return items
@@ -79,10 +92,10 @@ def main():
             display: block;
             margin: 0 auto;
             opacity: 0.9;
-            transition: opacity 0.2s ease;  /* Добавляем плавный переход */
+            transition: opacity 0.2s ease;
         }
         .otg-logo a:hover img {
-            opacity: 1;  /* Повышаем яркость при наведении */
+            opacity: 1;
             cursor: pointer;
         }
         </style>
@@ -103,7 +116,7 @@ def main():
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: var(--background-color);  /* Используем системную переменную цвета фона */
+            background-color: var(--background-color);
             padding: 10px 0;
             text-align: center;
             border-top: 1px solid rgba(255, 0, 0, 0.2);
@@ -119,7 +132,7 @@ def main():
             vertical-align: middle;
         }
         .footer a {
-            color: inherit;  /* Наследуем цвет текста от родителя */
+            color: inherit;
             text-decoration: none;
         }
         .footer a:hover {
@@ -144,7 +157,7 @@ def main():
             </div>
         </div>
     """, unsafe_allow_html=True)
-    
+
     st.markdown("""
         <style>
         .sales-table {
@@ -209,6 +222,39 @@ def main():
             margin-bottom: 20px;
             background-color: transparent;
         }
+        
+        .rarity-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .rarity-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .rarity-text {
+            font-size: 0.9em;
+            font-weight: normal;
+        }
+        .rarity-common { color: #ffffff; }
+        .rarity-uncommon { color: #1eff00; }
+        .rarity-rare { color: #0070dd; }
+        .rarity-epic { color: #a335ee; }
+        .rarity-legendary { color: #ff8000; }
+        
+        .select-item {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+        }
+        .select-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
         </style>
     """, unsafe_allow_html=True)
     
@@ -216,10 +262,24 @@ def main():
     current_gun_price = load_current_price()
     
     st.sidebar.header("Filters")
-    
-    selected_item = st.sidebar.selectbox(
+
+    def format_option(item_name):
+        if item_name in items_data and items_data[item_name]['rarity']:
+            rarity = items_data[item_name]['rarity']
+            dots = {
+                'Common': '⚪',
+                'Uncommon': '🟢',
+                'Rare': '🔵',
+                'Epic': '🟣',
+                'Legendary': '🟡'
+            }
+            return f"{dots.get(rarity, '⚪')} {item_name}"
+        return f"⚪ {item_name}"
+
+    selected_formatted_item = st.sidebar.selectbox(
         "Select Item",
         options=sorted(items_data.keys()),
+        format_func=format_option,
         index=0
     )
     
@@ -236,7 +296,7 @@ def main():
     show_volume = st.sidebar.checkbox('Volume', value=False)
     connect_dots = st.sidebar.checkbox('Connect points', value=False)
     
-    df = items_data[selected_item]
+    df = items_data[selected_formatted_item]['data']
     df['sale_date'] = pd.to_datetime(df['sale_date'])
     
     min_date = df['sale_date'].min()
@@ -257,7 +317,19 @@ def main():
         filtered_df = df[mask]
         filtered_df['formatted_date'] = filtered_df['sale_date'].dt.strftime('%Y-%m-%d %H:%M:%S')
 
-        st.markdown(f"### {selected_item}")
+        if not filtered_df.empty and 'rarity' in filtered_df.columns:
+            rarity = filtered_df['rarity'].iloc[0]
+            color, rarity_class = get_rarity_style(rarity)
+            st.markdown(f"""
+                <div class="rarity-container">
+                    <h3 style="margin: 0;">{selected_formatted_item}</h3>
+                    <span class="rarity-dot" style="background-color: {color};"></span>
+                    <span class="rarity-text rarity-{rarity_class}">{rarity}</span>
+                </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown(f"### {selected_formatted_item}")
+
         info_col1, info_col2 = st.columns([1, 3])
         
         with info_col1:
@@ -265,10 +337,7 @@ def main():
                 image_url = filtered_df['image_url'].iloc[0]
                 if image_url:
                     st.markdown('<div class="image-wrapper">', unsafe_allow_html=True)
-                    st.image(
-                        image_url,
-                        width=300
-                    )
+                    st.image(image_url, width=300)
                     st.markdown('</div>', unsafe_allow_html=True)
         
         with info_col2:
@@ -466,4 +535,4 @@ def main():
         st.markdown(table_html, unsafe_allow_html=True)
 
 if __name__ == "__main__":
-    main()
+    main()  
