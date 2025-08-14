@@ -25,16 +25,13 @@ def load_current_price():
         return 0.03
 
 def load_sales_data():
-    # Изменен путь к директории с данными
     sales_dir = os.path.join(os.path.dirname(__file__), 'data', 'sales')
+    items = {}
     
     if not os.path.exists(sales_dir):
         st.error(f"Directory not found: {sales_dir}")
-        st.error(f"Current working directory: {os.getcwd()}")
-        st.error(f"Contents of current directory: {os.listdir(os.getcwd())}")
         return {}
         
-    items = {}
     for file in os.listdir(sales_dir):
         try:
             if file.endswith('.csv'):
@@ -42,12 +39,18 @@ def load_sales_data():
                 if not df.empty:
                     item_name = df['name'].iloc[0]
                     rarity = df['rarity'].iloc[0] if 'rarity' in df.columns else None
-                    items[item_name] = {
+                    
+                    # Создаем уникальный ключ для каждой комбинации имени и редкости
+                    key = f"{item_name} {rarity}" if rarity else item_name
+                    
+                    items[key] = {
                         'data': df,
                         'rarity': rarity
                     }
+                        
         except Exception as e:
             st.error(f"Error reading file {file}: {str(e)}")
+            
     return items
 
 def shorten_address(address, length=8):
@@ -273,14 +276,14 @@ def main():
                 'Epic': '🟣',
                 'Legendary': '🟡'
             }
-            return f"{dots.get(rarity, '⚪')} {item_name}"
+            return f"{dots.get(rarity, '⚪')} {item_name.rsplit(' ', 1)[0]}"
         return f"⚪ {item_name}"
 
     selected_formatted_item = st.sidebar.selectbox(
         "Select Item",
         options=sorted(items_data.keys()),
         format_func=format_option,
-        index=0
+        index=sorted(items_data.keys()).index("Golden Yank Hat Epic") if "Golden Yank Hat Epic" in items_data else 0
     )
     
     show_trendline = st.sidebar.checkbox('Trend line', value=False)
