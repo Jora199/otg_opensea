@@ -40,7 +40,6 @@ def load_sales_data():
                     item_name = df['name'].iloc[0]
                     rarity = df['rarity'].iloc[0] if 'rarity' in df.columns else None
                     
-                    # Создаем уникальный ключ для каждой комбинации имени и редкости
                     key = f"{item_name} {rarity}" if rarity else item_name
                     
                     items[key] = {
@@ -52,6 +51,19 @@ def load_sales_data():
             st.error(f"Error reading file {file}: {str(e)}")
             
     return items
+
+def format_option(item_name):
+    if item_name in items_data and items_data[item_name]['rarity']:
+        rarity = items_data[item_name]['rarity']
+        dots = {
+            'Common': '⚪',
+            'Uncommon': '🟢',
+            'Rare': '🔵',
+            'Epic': '🟣',
+            'Legendary': '🟡'
+        }
+        return f"{dots.get(rarity, '⚪')} {item_name.rsplit(' ', 1)[0]}"
+    return f"⚪ {item_name}"
 
 def shorten_address(address, length=8):
     if not isinstance(address, str):
@@ -111,52 +123,96 @@ def main():
             </a>
         </div>
     """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <style>
+        .twitter-container {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            width: 250px;
+            text-align: center;
+        }
+        .twitter-link {
+            display: inline-block;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+        .twitter-link:hover {
+            opacity: 1;
+        }
+        .twitter-icon {
+            width: 40px;
+            height: 40px;
+            display: block;
+        }
+        </style>
+    """, unsafe_allow_html=True)
     
     st.markdown("""
         <style>
-        .footer {
+        .sidebar-footer {
             position: fixed;
             bottom: 0;
             left: 0;
-            width: 100%;
-            background-color: var(--background-color);
+            width: 250px;
             padding: 10px 0;
             text-align: center;
-            border-top: 1px solid rgba(255, 0, 0, 0.2);
         }
         .footer-content {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 10px;
+            flex-direction: column;
         }
-        .footer img {
-            height: 20px;
-            vertical-align: middle;
+        .footer-section {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
         }
-        .footer a {
+        .footer-divider {
+            width: 30px;
+            height: 1px;
+            background-color: rgba(255, 0, 0, 0.2);
+            margin: 5px 0;
+        }
+        .footer-icon {
+            height: 16px !important;
+            width: 16px !important;
+            transition: opacity 0.2s;
+        }
+        .sidebar-footer a {
             color: inherit;
             text-decoration: none;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
         }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-        [data-theme="light"] .footer {
-            background-color: #ffffff;
-            color: #0e1117;
-        }
-        [data-theme="dark"] .footer {
-            background-color: #0e1117;
-            color: #ffffff;
+        .sidebar-footer a:hover {
+            opacity: 0.8;
         }
         </style>
-        
-        <div class="footer">
+    """, unsafe_allow_html=True)
+
+    st.sidebar.markdown("""
+        <div class="sidebar-footer">
             <div class="footer-content">
-                <span>Powered by</span>
-                <a href="https://opensea.io" target="_blank">
-                    <img src="https://storage.googleapis.com/opensea-static/Logomark/Logomark-Blue.svg" alt="OpenSea">
-                </a>
+                <div class="footer-section">
+                    <span>Powered by</span>
+                    <a href="https://opensea.io/collection/off-the-grid" target="_blank">
+                        <img class="footer-icon" src="https://storage.googleapis.com/opensea-static/Logomark/Logomark-Blue.svg" alt="OpenSea">
+                    </a>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-section">
+                    <span>Developed by</span>
+                    <a href="https://x.com/blackpoint_team" target="_blank">
+                        <img class="footer-icon" src="https://i.postimg.cc/63QKF7Gf/1.png" alt="Twitter">
+                    </a>
+                </div>
             </div>
         </div>
     """, unsafe_allow_html=True)
@@ -538,4 +594,4 @@ def main():
         st.markdown(table_html, unsafe_allow_html=True)
 
 if __name__ == "__main__":
-    main()  
+    main()
