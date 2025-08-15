@@ -115,14 +115,6 @@ def main():
         }
         </style>
     """, unsafe_allow_html=True)
-    
-    st.sidebar.markdown("""
-        <div class="otg-logo">
-            <a href="https://store.epicgames.com/en-US/p/off-the-grid-7e3cc5" target="_blank">
-                <img src="https://i.postimg.cc/cCs5d0hF/Off-The-Grid-Official-Master-Logo-jpeg-scaled.png" alt="Off The Grid">
-            </a>
-        </div>
-    """, unsafe_allow_html=True)
 
     st.markdown("""
         <style>
@@ -153,31 +145,34 @@ def main():
     st.markdown("""
         <style>
         .sidebar-footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 250px;
+            position: relative;
+            width: 100%;
             padding: 10px 0;
             text-align: center;
+            margin-top: auto;
         }
         .footer-content {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 5px;
             flex-direction: column;
+            margin: 0 auto;
+            width: 100%;
         }
         .footer-section {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             font-size: 12px;
+            width: 100%;
         }
         .footer-divider {
             width: 30px;
             height: 1px;
             background-color: rgba(255, 0, 0, 0.2);
-            margin: 5px 0;
+            margin: 2px 0;
         }
         .footer-icon {
             height: 16px !important;
@@ -190,30 +185,27 @@ def main():
             transition: opacity 0.2s;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
         .sidebar-footer a:hover {
             opacity: 0.8;
         }
+
+        [data-testid="stSidebar"] > div:first-child {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
         </style>
     """, unsafe_allow_html=True)
 
+    st.sidebar.markdown("<div style='flex: 1'></div>", unsafe_allow_html=True)
+
     st.sidebar.markdown("""
-        <div class="sidebar-footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <span>Powered by</span>
-                    <a href="https://opensea.io/collection/off-the-grid" target="_blank">
-                        <img class="footer-icon" src="https://storage.googleapis.com/opensea-static/Logomark/Logomark-Blue.svg" alt="OpenSea">
-                    </a>
-                </div>
-                <div class="footer-divider"></div>
-                <div class="footer-section">
-                    <span>Developed by</span>
-                    <a href="https://x.com/blackpoint_team" target="_blank">
-                        <img class="footer-icon" src="https://i.postimg.cc/63QKF7Gf/1.png" alt="Twitter">
-                    </a>
-                </div>
-            </div>
+        <div class="otg-logo">
+            <a href="https://store.epicgames.com/en-US/p/off-the-grid-7e3cc5" target="_blank">
+                <img src="https://i.postimg.cc/cCs5d0hF/Off-The-Grid-Official-Master-Logo-jpeg-scaled.png" alt="Off The Grid">
+            </a>
         </div>
     """, unsafe_allow_html=True)
 
@@ -592,6 +584,26 @@ def main():
         table_html += '</tbody></table>'
         
         st.markdown(table_html, unsafe_allow_html=True)
+
+        st.sidebar.markdown("""
+            <div class="sidebar-footer">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <span>Powered by</span>
+                        <a href="https://opensea.io/collection/off-the-grid" target="_blank">
+                            <img class="footer-icon" src="https://storage.googleapis.com/opensea-static/Logomark/Logomark-Blue.svg" alt="OpenSea">
+                        </a>
+                    </div>
+                    <div class="footer-divider"></div>
+                    <div class="footer-section">
+                        <span>Developed by</span>
+                        <a href="https://x.com/blackpoint_team" target="_blank">
+                            <img class="footer-icon" src="https://i.postimg.cc/63QKF7Gf/1.png" alt="Twitter">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
