@@ -76,20 +76,47 @@ def format_opensea_link(address):
 def format_gunzscan_link(tx_hash):
     return f"https://gunzscan.io/tx/{tx_hash}"
 
-def format_number(number, show_usd=False, gun_price=0.03):
-    if show_usd:
-        usd_value = number * gun_price
-        if usd_value >= 1000000:
-            return f"${usd_value/1000000:.1f}M"
-        if usd_value >= 1000:
-            return f"${usd_value/1000:.1f}k"
-        return f"${usd_value:.2f}"
+def format_number(number, show_usd=False, gun_price=0.03, include_both=False):
+    gun_formatted = ""
+    usd_formatted = ""
+    
+    if number >= 1000000:
+        gun_formatted = f"{number/1000000:.1f}M GUN"
+    elif number >= 1000:
+        gun_formatted = f"{number/1000:.1f}k GUN"
     else:
-        if number >= 1000000:
-            return f"{number/1000000:.1f}M GUN"
-        if number >= 1000:
-            return f"{number/1000:.1f}k GUN"
-        return f"{number:.2f} GUN"
+        gun_formatted = f"{number:.2f} GUN"
+        
+    usd_value = number * gun_price
+    if usd_value >= 1000000:
+        usd_formatted = f"${usd_value/1000000:.1f}M"
+    elif usd_value >= 1000:
+        usd_formatted = f"${usd_value/1000:.1f}k"
+    else:
+        usd_formatted = f"${usd_value:.2f}"
+        
+    if include_both:
+        return gun_formatted, usd_formatted
+    return usd_formatted if show_usd else gun_formatted
+
+def format_metric_value(value, show_usd, gun_price):
+    gun_value = format_number(value, False, gun_price)
+    usd_value = format_number(value, True, gun_price)
+    
+    if show_usd:
+        return f"""
+            <div class="tooltip">
+                {usd_value}
+                <span class="tooltiptext">{gun_value}</span>
+            </div>
+        """
+    else:
+        return f"""
+            <div class="tooltip">
+                {gun_value}
+                <span class="tooltiptext">{usd_value}</span>
+            </div>
+        """
 
 def main():
     st.set_page_config(page_title='Off The Grid', page_icon="📊", layout="wide")
@@ -112,6 +139,52 @@ def main():
         .otg-logo a:hover img {
             opacity: 1;
             cursor: pointer;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <style>
+        .metric-container {
+            margin-bottom: 1rem;
+        }
+        .metric-label {
+            font-size: 14px;
+            font-weight: normal;
+            color: rgb(180, 180, 180);
+            margin-bottom: 0.2rem;
+        }
+        .metric-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: rgb(250, 250, 250);
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 5px 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -394,21 +467,21 @@ def main():
         with info_col2:
             col1, col2, col3, col4 = st.columns(4)
             with col1:
-                st.metric("Average Price", format_number(filtered_df['price_gun'].mean(), show_usd, current_gun_price))
-                st.metric("Total Volume", format_number(filtered_df['price_gun'].sum(), show_usd, current_gun_price))
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Average Price</div>{format_metric_value(filtered_df['price_gun'].mean(), show_usd, current_gun_price)}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Total Volume</div>{format_metric_value(filtered_df['price_gun'].sum(), show_usd, current_gun_price)}</div>", unsafe_allow_html=True)
             with col2:
-                st.metric("Minimum Price", format_number(filtered_df['price_gun'].min(), show_usd, current_gun_price))
-                st.metric("Maximum Price", format_number(filtered_df['price_gun'].max(), show_usd, current_gun_price))
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Minimum Price</div>{format_metric_value(filtered_df['price_gun'].min(), show_usd, current_gun_price)}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Maximum Price</div>{format_metric_value(filtered_df['price_gun'].max(), show_usd, current_gun_price)}</div>", unsafe_allow_html=True)
             with col3:
                 unique_sellers = filtered_df['seller'].nunique()
                 unique_buyers = filtered_df['buyer'].nunique()
-                st.metric("Unique Sellers", unique_sellers)
-                st.metric("Unique Buyers", unique_buyers)
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Unique Sellers</div>{unique_sellers}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Unique Buyers</div>{unique_buyers}</div>", unsafe_allow_html=True)
             with col4:
                 total_transactions = len(filtered_df)
                 unique_wallets = len(set(filtered_df['seller'].unique()) | set(filtered_df['buyer'].unique()))
-                st.metric("Total Transactions", total_transactions)
-                st.metric("Total Unique Wallets", unique_wallets)
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Total Transactions</div>{total_transactions}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Total Unique Wallets</div>{unique_wallets}</div>", unsafe_allow_html=True)
 
             with st.expander("Wallet Activity Details"):
                 wallet_col1, wallet_col2 = st.columns(2)
@@ -457,9 +530,13 @@ def main():
 
         hover_template = "<br>".join([
             "Date: %{customdata[0]}",
-            "Price: %{customdata[1]}"
+            "Price: %{customdata[1]}",
+            "USD: %{customdata[2]}"
             "<extra></extra>"
         ])
+
+        gun_prices = [format_number(price, False, current_gun_price) for price in filtered_df['price_gun']]
+        usd_prices = [format_number(price, True, current_gun_price) for price in filtered_df['price_gun']]
 
         fig.add_trace(go.Scatter(
             x=filtered_df['sale_date'],
@@ -469,7 +546,7 @@ def main():
             marker=dict(size=10, color='#FF0000'),
             line=dict(color='#CC0000'),
             hovertemplate=hover_template,
-            customdata=list(zip(filtered_df['formatted_date'], sales_formatted))
+            customdata=list(zip(filtered_df['formatted_date'], gun_prices, usd_prices))
         ))
 
         if show_volume:
@@ -571,7 +648,12 @@ def main():
         for _, row in page_data.iterrows():
             table_html += '<tr>'
             table_html += f'<td>{row["formatted_date"]}</td>'
-            table_html += f'<td>{format_number(row["price_gun"], show_usd, current_gun_price)}</td>'
+            if show_usd:
+                table_html += f'<td>{format_number(row["price_gun"], True, current_gun_price)}</td>'
+            else:
+                gun_value = format_number(row["price_gun"], False, current_gun_price)
+                usd_value = format_number(row["price_gun"], True, current_gun_price)
+                table_html += f'<td><div class="tooltip">{gun_value}<span class="tooltiptext">{usd_value}</span></div></td>'
             table_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["seller"])}" target="_blank">'
                         f'{shorten_address(row["seller"])}</a></td>')
             table_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["buyer"])}" target="_blank">'
@@ -598,7 +680,7 @@ def main():
                     <div class="footer-section">
                         <span>Developed by</span>
                         <a href="https://x.com/blackpoint_team" target="_blank">
-                            <img class="footer-icon" src="https://i.postimg.cc/63QKF7Gf/1.png" alt="Twitter">
+                            <img class="footer-icon" src="https://i.postimg.cc/L5wFLwgw/NEW-LOGO.png" alt="Twitter">
                         </a>
                     </div>
                 </div>
