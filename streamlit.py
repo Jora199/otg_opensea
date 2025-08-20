@@ -371,15 +371,15 @@ def main():
         if not filtered_df.empty and 'rarity' in filtered_df.columns:
             rarity = filtered_df['rarity'].iloc[0]
             color, rarity_class = get_rarity_style(rarity)
+            # Remove rarity from item name if it exists at the end
+            item_name = selected_formatted_item.rsplit(' ', 1)[0]
             st.markdown(f"""
                 <div class="rarity-container">
-                    <h3 style="margin: 0;">{selected_formatted_item}</h3>
+                    <h3 style="margin: 0;">{item_name}</h3>
                     <span class="rarity-dot" style="background-color: {color};"></span>
                     <span class="rarity-text rarity-{rarity_class}">{rarity}</span>
                 </div>
             """, unsafe_allow_html=True)
-        else:
-            st.markdown(f"### {selected_formatted_item}")
 
         info_col1, info_col2 = st.columns([1, 3])
         
