@@ -120,6 +120,53 @@ def format_metric_value(value, show_usd, gun_price):
 
 def main():
     st.set_page_config(page_title='Off The Grid', page_icon="📊", layout="wide")
+
+    st.markdown("""
+        <style>
+        /* 1) Скрыть иконку-стрелку у expander */
+        [data-testid="stExpander"] summary [data-testid="stIconMaterial"] {
+        display: none !important;
+        }
+
+        /* 2) На всякий случай — скрыть системный маркер summary в разных браузерах */
+        [data-testid="stExpander"] summary::-webkit-details-marker { display: none; }
+        [data-testid="stExpander"] summary { list-style: none; }
+
+        /* 3) Чуть выровнять текст заголовка (так как иконки больше нет) */
+        [data-testid="stExpander"] summary p {
+        margin: 0 !important;
+        padding-left: 0 !important;
+        display: inline-block !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+        <style>
+        /* Глобальный шрифт */
+        html, body, [class*="css"]  {
+            font-family: 'Inter', sans-serif !important;
+            color: #f5f5f5;
+        }
+
+        /* Заголовки */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: 600 !important;
+            letter-spacing: -0.5px;
+        }
+
+        /* Текст */
+        p, div, span, label {
+            font-family: 'Inter', sans-serif !important;
+            font-weight: 400 !important;
+            line-height: 1.6;
+        }
+        </style>
+
+        <!-- Подключаем Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    """, unsafe_allow_html=True)
     
     st.markdown("""
         <style>
