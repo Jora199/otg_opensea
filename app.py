@@ -123,9 +123,9 @@ def format_number(number, show_usd=False, gun_price=0.03, currency='GUN', includ
 
 def format_metric_value(value, show_usd, gun_price, currency='GUN'):
     formatted_value = format_number(value, show_usd, gun_price, currency=currency)
-    opposite_currency = 'WGUN' if currency == 'GUN' else 'GUN'
+    opposite_currency = 'GUN'
     opposite_value = format_number(value, not show_usd, gun_price, currency=opposite_currency)
-    
+
     return f"""
         <div class="tooltip">
             {formatted_value}
