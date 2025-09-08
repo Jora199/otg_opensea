@@ -5,6 +5,10 @@ from scipy import stats
 import os
 from datetime import datetime, timedelta
 import numpy as np
+import qrcode
+import base64
+from io import BytesIO
+import streamlit.components.v1 as components
 
 def get_rarity_style(rarity):
     rarity_colors = {
@@ -24,46 +28,65 @@ def load_current_price():
     except:
         return 0.03
 
-def load_sales_data():
+def load_all_data():
+    """
+    Loads data from both sales and offers directories.
+    Adds a 'type' column to differentiate sale types.
+    Returns a dictionary with data for each item.
+    """
     sales_dir = os.path.join(os.path.dirname(__file__), 'data', 'sales')
-    items = {}
-    
-    if not os.path.exists(sales_dir):
-        st.error(f"Directory not found: {sales_dir}")
-        return {}
-        
-    for file in os.listdir(sales_dir):
-        try:
-            if file.endswith('.csv'):
-                df = pd.read_csv(os.path.join(sales_dir, file))
-                if not df.empty:
-                    item_name = df['name'].iloc[0]
-                    rarity = df['rarity'].iloc[0] if 'rarity' in df.columns else None
-                    
-                    key = f"{item_name} {rarity}" if rarity else item_name
-                    
-                    items[key] = {
-                        'data': df,
-                        'rarity': rarity
-                    }
-                        
-        except Exception as e:
-            st.error(f"Error reading file {file}: {str(e)}")
-            
-    return items
+    offers_dir = os.path.join(os.path.dirname(__file__), 'data', 'offers')
+    items_data = {}
 
-def format_option(item_name):
-    if item_name in items_data and items_data[item_name]['rarity']:
-        rarity = items_data[item_name]['rarity']
-        dots = {
-            'Common': '⚪',
-            'Uncommon': '🟢',
-            'Rare': '🔵',
-            'Epic': '🟣',
-            'Legendary': '🟡'
-        }
-        return f"{dots.get(rarity, '⚪')} {item_name.rsplit(' ', 1)[0]}"
-    return f"⚪ {item_name}"
+    # Load regular sales (GUN)
+    if os.path.exists(sales_dir):
+        for file in os.listdir(sales_dir):
+            try:
+                if file.endswith('.csv'):
+                    df = pd.read_csv(os.path.join(sales_dir, file))
+                    if not df.empty:
+                        df['type'] = 'GUN'  # Add sale type
+                        item_name = df['name'].iloc[0]
+                        rarity = df['rarity'].iloc[0] if 'rarity' in df.columns else None
+                        key = f"{item_name} {rarity}" if rarity else item_name
+                        
+                        if key not in items_data:
+                            items_data[key] = {
+                                'data': df,
+                                'rarity': rarity
+                            }
+                        else:
+                            items_data[key]['data'] = pd.concat([items_data[key]['data'], df], ignore_index=True)
+            except Exception as e:
+                st.error(f"Error reading file {file} from sales: {str(e)}")
+    else:
+        st.warning(f"Sales directory not found: {sales_dir}")
+
+    # Load offer sales (WGUN)
+    if os.path.exists(offers_dir):
+        for file in os.listdir(offers_dir):
+            try:
+                if file.endswith('.csv'):
+                    df = pd.read_csv(os.path.join(offers_dir, file))
+                    if not df.empty:
+                        df['type'] = 'WGUN'  # Add offer sale type
+                        item_name = df['name'].iloc[0]
+                        rarity = df['rarity'].iloc[0] if 'rarity' in df.columns else None
+                        key = f"{item_name} {rarity}" if rarity else item_name
+                        
+                        if key not in items_data:
+                            items_data[key] = {
+                                'data': df,
+                                'rarity': rarity
+                            }
+                        else:
+                            items_data[key]['data'] = pd.concat([items_data[key]['data'], df], ignore_index=True)
+            except Exception as e:
+                st.error(f"Error reading file {file} from offers: {str(e)}")
+    else:
+        st.warning(f"Offers directory not found: {offers_dir}")
+
+    return items_data
 
 def shorten_address(address, length=8):
     if not isinstance(address, str):
@@ -76,16 +99,16 @@ def format_opensea_link(address):
 def format_gunzscan_link(tx_hash):
     return f"https://gunzscan.io/tx/{tx_hash}"
 
-def format_number(number, show_usd=False, gun_price=0.03, include_both=False):
+def format_number(number, show_usd=False, gun_price=0.03, currency='GUN', include_both=False):
     gun_formatted = ""
     usd_formatted = ""
     
     if number >= 1000000:
-        gun_formatted = f"{number/1000000:.1f}M GUN"
+        gun_formatted = f"{number/1000000:.1f}M {currency}"
     elif number >= 1000:
-        gun_formatted = f"{number/1000:.1f}k GUN"
+        gun_formatted = f"{number/1000:.1f}k {currency}"
     else:
-        gun_formatted = f"{number:.2f} GUN"
+        gun_formatted = f"{number:.2f} {currency}"
         
     usd_value = number * gun_price
     if usd_value >= 1000000:
@@ -99,40 +122,50 @@ def format_number(number, show_usd=False, gun_price=0.03, include_both=False):
         return gun_formatted, usd_formatted
     return usd_formatted if show_usd else gun_formatted
 
-def format_metric_value(value, show_usd, gun_price):
-    gun_value = format_number(value, False, gun_price)
-    usd_value = format_number(value, True, gun_price)
+def format_metric_value(value, show_usd, gun_price, currency='GUN'):
+    formatted_value = format_number(value, show_usd, gun_price, currency=currency)
+    opposite_currency = 'WGUN' if currency == 'GUN' else 'GUN'
+    opposite_value = format_number(value, not show_usd, gun_price, currency=opposite_currency)
     
-    if show_usd:
-        return f"""
-            <div class="tooltip">
-                {usd_value}
-                <span class="tooltiptext">{gun_value}</span>
-            </div>
-        """
-    else:
-        return f"""
-            <div class="tooltip">
-                {gun_value}
-                <span class="tooltiptext">{usd_value}</span>
-            </div>
-        """
+    return f"""
+        <div class="tooltip">
+            {formatted_value}
+            <span class="tooltiptext">{opposite_value}</span>
+        </div>
+    """
+
+def generate_qr_code(data):
+    qr = qrcode.QRCode(
+        version=1,  # Controls the size of the QR code
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(data)
+    qr.make(fit=True)
+    
+    img = qr.make_image(fill_color="black", back_color="white")
+    buf = BytesIO()
+    img.save(buf, format="PNG")
+    img_bytes = buf.getvalue()
+    encoded = base64.b64encode(img_bytes).decode()
+    return encoded
 
 def main():
     st.set_page_config(page_title='Off The Grid', page_icon="📊", layout="wide")
 
+    # Styling Streamlit components
     st.markdown("""
         <style>
-        /* 1) Скрыть иконку-стрелку у expander */
+        /* 1) Hide the arrow icon on expander */
         [data-testid="stExpander"] summary [data-testid="stIconMaterial"] {
         display: none !important;
         }
 
-        /* 2) На всякий случай — скрыть системный маркер summary в разных браузерах */
+        /* 2) Hide the system marker summary in different browsers */
         [data-testid="stExpander"] summary::-webkit-details-marker { display: none; }
-        [data-testid="stExpander"] summary { list-style: none; }
 
-        /* 3) Чуть выровнять текст заголовка (так как иконки больше нет) */
+        /* 3) Slightly align the title text (since the icons are no longer there) */
         [data-testid="stExpander"] summary p {
         margin: 0 !important;
         padding-left: 0 !important;
@@ -143,20 +176,20 @@ def main():
 
     st.markdown("""
         <style>
-        /* Глобальный шрифт */
+        /* Global font */
         html, body, [class*="css"]  {
             font-family: 'Inter', sans-serif !important;
             color: #f5f5f5;
         }
 
-        /* Заголовки */
+        /* Headings */
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif !important;
             font-weight: 600 !important;
             letter-spacing: -0.5px;
         }
 
-        /* Текст */
+        /* Text */
         p, div, span, label {
             font-family: 'Inter', sans-serif !important;
             font-weight: 400 !important;
@@ -164,7 +197,7 @@ def main():
         }
         </style>
 
-        <!-- Подключаем Google Fonts -->
+        <!-- Include Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet">
     """, unsafe_allow_html=True)
     
@@ -368,32 +401,12 @@ def main():
         .sales-table .link-cell a:hover {
             opacity: 0.8;
         }
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            margin-top: 20px;
-        }
-        .page-number {
-            padding: 5px 10px;
-            border: 1px solid #FF0000;
-            border-radius: 3px;
-            color: inherit;
-            text-decoration: none;
-        }
-        .page-number.active {
-            background-color: #FF0000;
-            color: white;
-        }
-        .page-number:hover:not(.active) {
-            background-color: rgba(255, 0, 0, 0.1);
-        }
         .image-container {
             padding: 10px;
             margin-bottom: 20px;
             background-color: transparent;
         }
-        
+
         .rarity-container {
             display: flex;
             align-items: center;
@@ -414,7 +427,7 @@ def main():
         .rarity-rare { color: #0070dd; }
         .rarity-epic { color: #a335ee; }
         .rarity-legendary { color: #ff8000; }
-        
+
         .select-item {
             display: flex !important;
             align-items: center !important;
@@ -429,7 +442,8 @@ def main():
         </style>
     """, unsafe_allow_html=True)
     
-    items_data = load_sales_data()
+    # Load data (updated function)
+    items_data = load_all_data()
     current_gun_price = load_current_price()
     
     st.sidebar.header("Filters")
@@ -446,7 +460,7 @@ def main():
             }
             return f"{dots.get(rarity, '⚪')} {item_name.rsplit(' ', 1)[0]}"
         return f"⚪ {item_name}"
-
+    
     selected_formatted_item = st.sidebar.selectbox(
         "Select Item",
         options=sorted(items_data.keys()),
@@ -454,20 +468,27 @@ def main():
         index=sorted(items_data.keys()).index("Golden Yank Hat Epic") if "Golden Yank Hat Epic" in items_data else 0
     )
     
-    show_trendline = st.sidebar.checkbox('Trend line', value=False)
+    show_trendline = st.sidebar.checkbox('Show Trend Line', value=False)
     if show_trendline:
         trend_type = st.sidebar.selectbox(
-            "Trend type",
+            "Trend Type",
             options=['Linear', 'Polynomial'],
             index=0
         )
         if trend_type == 'Polynomial':
-            degree = st.sidebar.slider('Polynomial degree', 2, 5, 2)
+            degree = st.sidebar.slider('Polynomial Degree', 2, 5, 2)
     
-    show_volume = st.sidebar.checkbox('Volume', value=False)
-    connect_dots = st.sidebar.checkbox('Connect points', value=False)
+    show_volume = st.sidebar.checkbox('Show Volume', value=False)
+    connect_dots = st.sidebar.checkbox('Connect Dots', value=False)
     
-    df = items_data[selected_formatted_item]['data']
+    # Get data for the selected item
+    if selected_formatted_item in items_data:
+        df = items_data[selected_formatted_item]['data'].copy()
+    else:
+        st.error(f"Selected item '{selected_formatted_item}' not found in the data.")
+        return
+    
+    # Convert date
     df['sale_date'] = pd.to_datetime(df['sale_date'])
     
     min_date = df['sale_date'].min()
@@ -480,18 +501,18 @@ def main():
         max_value=max_date.date()
     )
 
-    show_usd = st.sidebar.checkbox('USD', value=False)
+    show_usd = st.sidebar.checkbox('Show in USD', value=False)
     
     if len(date_range) == 2:
         start_date, end_date = date_range
         mask = (df['sale_date'].dt.date >= start_date) & (df['sale_date'].dt.date <= end_date)
-        filtered_df = df[mask]
+        filtered_df = df[mask].copy()
         filtered_df['formatted_date'] = filtered_df['sale_date'].dt.strftime('%Y-%m-%d %H:%M:%S')
-
+        
         if not filtered_df.empty and 'rarity' in filtered_df.columns:
             rarity = filtered_df['rarity'].iloc[0]
             color, rarity_class = get_rarity_style(rarity)
-            # Remove rarity from item name if it exists at the end
+            # Remove rarity from the item name if it is specified at the end
             item_name = selected_formatted_item.rsplit(' ', 1)[0]
             st.markdown(f"""
                 <div class="rarity-container">
@@ -500,12 +521,19 @@ def main():
                     <span class="rarity-text rarity-{rarity_class}">{rarity}</span>
                 </div>
             """, unsafe_allow_html=True)
-
+    
+        # Split data by types for visualization
+        sales_df = filtered_df[filtered_df['type'] == 'GUN']
+        offers_df = filtered_df[filtered_df['type'] == 'WGUN']
+    
+        # Combined statistics
+        combined_df = filtered_df.copy()
+    
         info_col1, info_col2 = st.columns([1, 3])
         
         with info_col1:
-            if not filtered_df.empty and 'image_url' in filtered_df.columns:
-                image_url = filtered_df['image_url'].iloc[0]
+            if not combined_df.empty and 'image_url' in combined_df.columns:
+                image_url = combined_df['image_url'].iloc[0]
                 if image_url:
                     st.markdown('<div class="image-wrapper">', unsafe_allow_html=True)
                     st.image(image_url, width=300)
@@ -514,28 +542,28 @@ def main():
         with info_col2:
             col1, col2, col3, col4 = st.columns(4)
             with col1:
-                st.markdown(f"<div class='metric-container'><div class='metric-label'>Average Price</div>{format_metric_value(filtered_df['price_gun'].mean(), show_usd, current_gun_price)}</div>", unsafe_allow_html=True)
-                st.markdown(f"<div class='metric-container'><div class='metric-label'>Total Volume</div>{format_metric_value(filtered_df['price_gun'].sum(), show_usd, current_gun_price)}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Average Price</div>{format_metric_value(combined_df['price_gun'].mean(), show_usd, current_gun_price, currency='GUN')}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Total Volume</div>{format_metric_value(combined_df['price_gun'].sum(), show_usd, current_gun_price, currency='GUN')}</div>", unsafe_allow_html=True)
             with col2:
-                st.markdown(f"<div class='metric-container'><div class='metric-label'>Minimum Price</div>{format_metric_value(filtered_df['price_gun'].min(), show_usd, current_gun_price)}</div>", unsafe_allow_html=True)
-                st.markdown(f"<div class='metric-container'><div class='metric-label'>Maximum Price</div>{format_metric_value(filtered_df['price_gun'].max(), show_usd, current_gun_price)}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Minimum Price</div>{format_metric_value(combined_df['price_gun'].min(), show_usd, current_gun_price, currency='GUN')}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='metric-container'><div class='metric-label'>Maximum Price</div>{format_metric_value(combined_df['price_gun'].max(), show_usd, current_gun_price, currency='GUN')}</div>", unsafe_allow_html=True)
             with col3:
-                unique_sellers = filtered_df['seller'].nunique()
-                unique_buyers = filtered_df['buyer'].nunique()
+                unique_sellers = combined_df['seller'].nunique()
+                unique_buyers = combined_df['buyer'].nunique()
                 st.markdown(f"<div class='metric-container'><div class='metric-label'>Unique Sellers</div>{unique_sellers}</div>", unsafe_allow_html=True)
                 st.markdown(f"<div class='metric-container'><div class='metric-label'>Unique Buyers</div>{unique_buyers}</div>", unsafe_allow_html=True)
             with col4:
-                total_transactions = len(filtered_df)
-                unique_wallets = len(set(filtered_df['seller'].unique()) | set(filtered_df['buyer'].unique()))
+                total_transactions = len(combined_df)
+                unique_wallets = len(set(combined_df['seller'].unique()) | set(combined_df['buyer'].unique()))
                 st.markdown(f"<div class='metric-container'><div class='metric-label'>Total Transactions</div>{total_transactions}</div>", unsafe_allow_html=True)
                 st.markdown(f"<div class='metric-container'><div class='metric-label'>Total Unique Wallets</div>{unique_wallets}</div>", unsafe_allow_html=True)
-
+    
             with st.expander("Wallet Activity Details"):
                 wallet_col1, wallet_col2 = st.columns(2)
                 
                 with wallet_col1:
                     st.subheader("Top Sellers")
-                    top_sellers = (filtered_df['seller']
+                    top_sellers = (combined_df['seller']
                                  .value_counts()
                                  .head(5)
                                  .reset_index())
@@ -553,7 +581,7 @@ def main():
                 
                 with wallet_col2:
                     st.subheader("Top Buyers")
-                    top_buyers = (filtered_df['buyer']
+                    top_buyers = (combined_df['buyer']
                                 .value_counts()
                                 .head(5)
                                 .reset_index())
@@ -568,36 +596,83 @@ def main():
                         buyers_html += '</tr>'
                     buyers_html += '</tbody></table>'
                     st.markdown(buyers_html, unsafe_allow_html=True)
-
+    
+        # Create the plot
         fig = go.Figure()
 
-        scatter_mode = 'lines+markers' if connect_dots else 'markers'
-        
-        sales_formatted = [format_number(price, show_usd, current_gun_price) for price in filtered_df['price_gun']]
+        # Combine GUN and WGUN data for line visualization
+        all_sales_df = pd.concat([sales_df, offers_df]).sort_values('sale_date')
 
-        hover_template = "<br>".join([
+        # Define hover templates
+        hover_template_sales = "<br>".join([
             "Date: %{customdata[0]}",
-            "Price: %{customdata[1]}",
-            "USD: %{customdata[2]}"
+            "Price: %{customdata[1]}",  # Already includes 'GUN'
+            "USD: %{customdata[2]}",
             "<extra></extra>"
         ])
 
-        gun_prices = [format_number(price, False, current_gun_price) for price in filtered_df['price_gun']]
-        usd_prices = [format_number(price, True, current_gun_price) for price in filtered_df['price_gun']]
+        hover_template_offers = "<br>".join([
+            "Date: %{customdata[0]}",
+            "Price: %{customdata[1]}",  # Already includes 'WGUN'
+            "USD: %{customdata[2]}",
+            "<extra></extra>"
+        ])
 
-        fig.add_trace(go.Scatter(
-            x=filtered_df['sale_date'],
-            y=filtered_df['price_gun'],
-            mode=scatter_mode,
-            name='Sales',
-            marker=dict(size=10, color='#FF0000'),
-            line=dict(color='#CC0000'),
-            hovertemplate=hover_template,
-            customdata=list(zip(filtered_df['formatted_date'], gun_prices, usd_prices))
-        ))
+        # Format prices
+        gun_prices_sales = [format_number(price, False, current_gun_price, currency='GUN') for price in sales_df['price_gun']]
+        usd_prices_sales = [format_number(price, True, current_gun_price, currency='GUN') for price in sales_df['price_gun']]
 
+        gun_prices_offers = [format_number(price, False, current_gun_price, currency='WGUN') for price in offers_df['price_gun']]
+        usd_prices_offers = [format_number(price, True, current_gun_price, currency='WGUN') for price in offers_df['price_gun']]
+
+        # Define customdata
+        customdata_sales = list(zip(sales_df['formatted_date'], gun_prices_sales, usd_prices_sales))
+        customdata_offers = list(zip(offers_df['formatted_date'], gun_prices_offers, usd_prices_offers))
+
+        # Set marker modes
+        scatter_mode_sales = 'markers'  # Remove lines from individual traces
+        scatter_mode_offers = 'markers'
+
+        # Add traces for regular sales (GUN)
+        if not sales_df.empty:
+            fig.add_trace(go.Scatter(
+                x=sales_df['sale_date'],
+                y=sales_df['price_gun'],
+                mode=scatter_mode_sales,
+                name='GUN',
+                marker=dict(size=10, color='#FF0000'),
+                hovertemplate=hover_template_sales,
+                customdata=customdata_sales
+            ))
+
+        # Add traces for offer sales (WGUN)
+        if not offers_df.empty:
+            fig.add_trace(go.Scatter(
+                x=offers_df['sale_date'],
+                y=offers_df['price_gun'],
+                mode=scatter_mode_offers,
+                name='WGUN',
+                marker=dict(size=10, color='#FFD700'),  # Yellow color
+                hovertemplate=hover_template_offers,
+                customdata=customdata_offers
+            ))
+
+        # Add a connecting line if enabled
+        if connect_dots and not all_sales_df.empty:
+            # Sort for correct point connection
+            all_sales_df_sorted = all_sales_df.sort_values('sale_date')
+            fig.add_trace(go.Scatter(
+                x=all_sales_df_sorted['sale_date'],
+                y=all_sales_df_sorted['price_gun'],
+                mode='lines',
+                name='Connecting Line',
+                line=dict(color='red', width=2),
+                hoverinfo='skip'  # Disable hover for the line
+            ))
+
+        # Add sales volume
         if show_volume:
-            daily_volumes = filtered_df.groupby(filtered_df['sale_date'].dt.date).agg({
+            daily_volumes = combined_df.groupby(combined_df['sale_date'].dt.date).agg({
                 'price_gun': ['sum', 'count']
             }).reset_index()
             daily_volumes.columns = ['date', 'volume_gun', 'count']
@@ -607,13 +682,13 @@ def main():
             volume_hover_template = "<br>".join([
                 "Date: %{x}",
                 "Volume: %{customdata[1]}",
-                "Transactions: %{customdata[0]}"
+                "Transactions: %{customdata[0]}",
                 "<extra></extra>"
             ])
 
-            volume_formatted = [format_number(vol, show_usd, current_gun_price) for vol in daily_volumes['volume_gun']]
+            volume_formatted = [format_number(vol, show_usd, current_gun_price, currency='GUN') for vol in daily_volumes['volume_gun']]
             
-            y_values = daily_volumes['volume_gun'] if not show_usd else daily_volumes['volume_gun'] * current_gun_price
+            y_values = [vol * current_gun_price if show_usd else vol for vol in daily_volumes['volume_gun']]
             
             fig.add_trace(go.Bar(
                 x=volume_dates,
@@ -625,33 +700,35 @@ def main():
                 customdata=list(zip(daily_volumes['count'], volume_formatted))
             ))
 
-        if show_trendline and len(filtered_df) > 1:
-            x_numeric = (filtered_df['sale_date'] - filtered_df['sale_date'].min()).dt.total_seconds()
+        # Add trend line if enabled
+        if show_trendline and len(combined_df) > 1:
+            x_numeric = (combined_df['sale_date'] - combined_df['sale_date'].min()).dt.total_seconds()
             
             if trend_type == 'Linear':
-                slope, intercept, r_value, p_value, std_err = stats.linregress(x_numeric, filtered_df['price_gun'])
+                slope, intercept, r_value, p_value, std_err = stats.linregress(x_numeric, combined_df['price_gun'])
                 trend_y = slope * x_numeric + intercept
                 
                 if abs(r_value) < 0.5:
-                    st.sidebar.warning('⚠️ Trend line may be unreliable due to high price volatility and limited data')
+                    st.sidebar.warning('⚠️ The trend line might be unreliable due to high price volatility and limited data.')
             else:
-                coeffs = np.polyfit(x_numeric, filtered_df['price_gun'], degree)
+                coeffs = np.polyfit(x_numeric, combined_df['price_gun'], degree)
                 trend_y = np.polyval(coeffs, x_numeric)
             
             fig.add_trace(go.Scatter(
-                x=filtered_df['sale_date'],
+                x=combined_df['sale_date'],
                 y=trend_y,
                 mode='lines',
                 name='Trend',
                 line=dict(color='#00FF00', width=2, dash='dash'),
                 hoverinfo='skip'
             ))
-        
-        price_label = "Price (USD)" if show_usd else "Price (GUN)"
+
+        # Update plot layout
+        price_label = "Price (USD)" if show_usd else "Price (GUN / WGUN)"
         fig.update_layout(
             hovermode='closest',
             height=600,
-            showlegend=False,
+            showlegend=True,
             xaxis_title="Date",
             yaxis_title=price_label,
             yaxis2=dict(
@@ -661,11 +738,12 @@ def main():
                 showgrid=False
             ) if show_volume else dict()
         )
-        
+
         st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
-        
+            
+        # Handle pagination for the table
         query_params = st.query_params
-        page = int(query_params.get("page", 1))
+        page = int(query_params.get("page", [1])[0])
         
         filtered_df = filtered_df.sort_values('sale_date', ascending=False)
 
@@ -677,17 +755,18 @@ def main():
             page = st.number_input(
                 "Page",
                 min_value=1,
-                max_value=total_pages,
-                value=1,
+                max_value=total_pages if total_pages > 0 else 1,
+                value=page if 1 <= page <= total_pages else 1,
                 step=1
             )
         
         start_idx = (page - 1) * items_per_page
         end_idx = start_idx + items_per_page
         page_data = filtered_df.iloc[start_idx:end_idx]
-
+        
+        # Create HTML table with 'Token' column
         table_html = '<table class="sales-table"><thead><tr>'
-        columns = ['Date', 'Price', 'Seller', 'Buyer', 'Tx Hash', 'View']
+        columns = ['Date', 'Price', 'Token', 'Seller', 'Buyer', 'Tx Hash', 'View']
         for col in columns:
             table_html += f'<th>{col}</th>'
         table_html += '</tr></thead><tbody>'
@@ -696,29 +775,44 @@ def main():
             table_html += '<tr>'
             table_html += f'<td>{row["formatted_date"]}</td>'
             if show_usd:
-                table_html += f'<td>{format_number(row["price_gun"], True, current_gun_price)}</td>'
+                table_html += f'<td>{format_number(row["price_gun"], True, current_gun_price, currency="GUN")}</td>'
             else:
-                gun_value = format_number(row["price_gun"], False, current_gun_price)
-                usd_value = format_number(row["price_gun"], True, current_gun_price)
+                # Determine the currency based on the transaction type
+                currency = 'WGUN' if row['type'] == 'WGUN' else 'GUN'
+                gun_value = format_number(row["price_gun"], False, current_gun_price, currency=currency)
+                usd_value = format_number(row["price_gun"], True, current_gun_price, currency='GUN')  # USD remains unchanged
                 table_html += f'<td><div class="tooltip">{gun_value}<span class="tooltiptext">{usd_value}</span></div></td>'
+            # Add 'Token' column
+            token = row['type']
+            table_html += f'<td>{token}</td>'
             table_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["seller"])}" target="_blank">'
                         f'{shorten_address(row["seller"])}</a></td>')
             table_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["buyer"])}" target="_blank">'
                         f'{shorten_address(row["buyer"])}</a></td>')
             table_html += (f'<td class="link-cell"><a href="{format_gunzscan_link(row["transaction_hash"])}" target="_blank">'
                         f'{shorten_address(row["transaction_hash"])}</a></td>')
-            table_html += (f'<td class="link-cell"><a href="{row["item_url"]}" target="_blank">View Item</a></td>')
+            table_html += (f'<td class="link-cell"><a href="{row["item_url"]}" target="_blank">View</a></td>')
             table_html += '</tr>'
 
         table_html += '</tbody></table>'
         
         st.markdown(table_html, unsafe_allow_html=True)
 
+        # Donation Section - Modified Code
+        st.markdown("## 🙏 Support the Project")
+        st.markdown("Your support helps us continue the development and maintain the project. Any contribution would be greatly appreciated!")
+
+        wallet_address = "0x463dedf4b71cd7e94d661c359818f9cd2071991b"
+
+        # Display the wallet address as selectable text
+        st.markdown(f"**EVM Address:** `{wallet_address}`")
+
+        # Footer
         st.sidebar.markdown("""
             <div class="sidebar-footer">
                 <div class="footer-content">
                     <div class="footer-section">
-                        <span>Powered by</span>
+                        <span>Provided by</span>
                         <a href="https://opensea.io/collection/off-the-grid" target="_blank">
                             <img class="footer-icon" src="https://storage.googleapis.com/opensea-static/Logomark/Logomark-Blue.svg" alt="OpenSea">
                         </a>
