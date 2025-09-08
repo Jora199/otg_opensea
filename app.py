@@ -765,7 +765,7 @@ def main():
         
         # Create HTML table with 'Token' column
         table_html = '<table class="sales-table"><thead><tr>'
-        columns = ['Date', 'Price', 'Token', 'Seller', 'Buyer', 'Tx Hash', 'View']
+        columns = ['Date', 'Price', 'Seller', 'Buyer', 'Tx Hash', 'View']
         for col in columns:
             table_html += f'<th>{col}</th>'
         table_html += '</tr></thead><tbody>'
