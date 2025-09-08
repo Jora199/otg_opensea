@@ -5,7 +5,6 @@ from scipy import stats
 import os
 from datetime import datetime, timedelta
 import numpy as np
-import qrcode
 import base64
 from io import BytesIO
 import streamlit.components.v1 as components
