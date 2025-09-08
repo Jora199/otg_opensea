@@ -755,7 +755,7 @@ def main():
         
         # Формирование HTML таблицы с добавлением столбца 'Token'
         table_html = '<table class="sales-table"><thead><tr>'
-        columns = ['Date', 'Price', 'Seller', 'Buyer', 'Tx Hash', 'View']
+        columns = ['Date', 'Price', 'Token', 'Seller', 'Buyer', 'Tx Hash', 'View']
         for col in columns:
             table_html += f'<th>{col}</th>'
         table_html += '</tr></thead><tbody>'
@@ -769,6 +769,9 @@ def main():
                 gun_value = format_number(row["price_gun"], False, current_gun_price)
                 usd_value = format_number(row["price_gun"], True, current_gun_price)
                 table_html += f'<td><div class="tooltip">{gun_value}<span class="tooltiptext">{usd_value}</span></div></td>'
+            # Добавление столбца 'Token'
+            token = row['type']
+            table_html += f'<td>{token}</td>'
             table_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["seller"])}" target="_blank">'
                         f'{shorten_address(row["seller"])}</a></td>')
             table_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["buyer"])}" target="_blank">'
