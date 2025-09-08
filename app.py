@@ -804,10 +804,7 @@ def main():
         wallet_address = "0x463dedf4b71cd7e94d661c359818f9cd2071991b"
 
         # Display the wallet address as selectable text
-        st.markdown(f"**Wallet Address:** `{wallet_address}`")
-        
-        # Optionally, you can provide instructions or additional styling
-        st.markdown("*You can copy the wallet address above by selecting it and pressing **Ctrl+C**.*")
+        st.markdown(f"**EVM Address:** `{wallet_address}`")
 
         # Footer
         st.sidebar.markdown("""
