@@ -5,7 +5,6 @@ from scipy import stats
 import os
 from datetime import datetime, timedelta
 import numpy as np
-import qrcode
 import base64
 from io import BytesIO
 import streamlit.components.v1 as components
@@ -133,23 +132,6 @@ def format_metric_value(value, show_usd, gun_price, currency='GUN'):
             <span class="tooltiptext">{opposite_value}</span>
         </div>
     """
-
-def generate_qr_code(data):
-    qr = qrcode.QRCode(
-        version=1,  # Controls the size of the QR code
-        error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=10,
-        border=4,
-    )
-    qr.add_data(data)
-    qr.make(fit=True)
-    
-    img = qr.make_image(fill_color="black", back_color="white")
-    buf = BytesIO()
-    img.save(buf, format="PNG")
-    img_bytes = buf.getvalue()
-    encoded = base64.b64encode(img_bytes).decode()
-    return encoded
 
 def main():
     st.set_page_config(page_title='Off The Grid', page_icon="📊", layout="wide")
