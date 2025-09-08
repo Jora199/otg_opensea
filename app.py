@@ -783,7 +783,6 @@ def main():
                 table_html += f'<td><div class="tooltip">{gun_value}<span class="tooltiptext">{usd_value}</span></div></td>'
             # Add 'Token' column
             token = row['type']
-            table_html += f'<td>{token}</td>'
             table_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["seller"])}" target="_blank">'
                         f'{shorten_address(row["seller"])}</a></td>')
             table_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["buyer"])}" target="_blank">'
@@ -798,7 +797,7 @@ def main():
         st.markdown(table_html, unsafe_allow_html=True)
 
         # Donation Section - Modified Code
-        st.markdown("## 💖 Support the Project")
+        st.markdown("## 🙏 Support the Project")
         st.markdown("Your support helps us continue the development and maintain the project. Any contribution would be greatly appreciated!")
 
         wallet_address = "0x463dedf4b71cd7e94d661c359818f9cd2071991b"
