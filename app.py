@@ -741,9 +741,9 @@ def main():
         st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
             
         # Handle pagination for the table
-        query_params = st.experimental_get_query_params()  # Updated to use experimental_get_query_params
+        query_params = st.experimental_get_query_params()
         page = int(query_params.get("page", [1])[0])
-        
+
         filtered_df = filtered_df.sort_values('sale_date', ascending=False)
 
         items_per_page = 10
@@ -758,12 +758,12 @@ def main():
                 value=page if 1 <= page <= total_pages else 1,
                 step=1
             )
-        
+
         start_idx = (page - 1) * items_per_page
         end_idx = start_idx + items_per_page
         page_data = filtered_df.iloc[start_idx:end_idx]
-        
-        # Create HTML table with 'Token' column
+
+        # Создание HTML таблицы без колонки 'Token'
         table_html = '<table class="sales-table"><thead><tr>'
         columns = ['Date', 'Price', 'Seller', 'Buyer', 'Tx Hash', 'View']
         for col in columns:
@@ -776,13 +776,11 @@ def main():
             if show_usd:
                 table_html += f'<td>{format_number(row["price_gun"], True, current_gun_price, currency="GUN")}</td>'
             else:
-                # Determine the currency based on the transaction type
                 currency = 'WGUN' if row['type'] == 'WGUN' else 'GUN'
                 gun_value = format_number(row["price_gun"], False, current_gun_price, currency=currency)
-                usd_value = format_number(row["price_gun"], True, current_gun_price, currency='GUN')  # USD remains unchanged
+                usd_value = format_number(row["price_gun"], True, current_gun_price, currency='GUN')
                 table_html += f'<td><div class="tooltip">{gun_value}<span class="tooltiptext">{usd_value}</span></div></td>'
-            # Add 'Token' column
-            token = row['type']
+            # Удалена колонка 'Token'
             table_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["seller"])}" target="_blank">'
                         f'{shorten_address(row["seller"])}</a></td>')
             table_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["buyer"])}" target="_blank">'
@@ -793,7 +791,7 @@ def main():
             table_html += '</tr>'
 
         table_html += '</tbody></table>'
-        
+
         st.markdown(table_html, unsafe_allow_html=True)
 
         # Donation Section - Modified Code
