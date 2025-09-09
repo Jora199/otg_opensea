@@ -424,7 +424,7 @@ def main():
         </style>
     """, unsafe_allow_html=True)
     
-    # Load data (updated function)
+    # Load data
     items_data = load_all_data()
     current_gun_price = load_current_price()
     
@@ -443,11 +443,28 @@ def main():
             return f"{dots.get(rarity, '⚪')} {item_name.rsplit(' ', 1)[0]}"
         return f"⚪ {item_name}"
     
+    # Determine the selected item based on query params or latest sale
+    query_params = st.query_params
+    selected_item = None
+    if 'item' in query_params:
+        potential_item = query_params['item'][0]
+        if potential_item in items_data:
+            selected_item = potential_item
+
+    if not selected_item:
+        # Find the item with the latest sale
+        latest_sale_date = None
+        for item, details in items_data.items():
+            item_latest_date = details['data']['sale_date'].max()
+            if latest_sale_date is None or item_latest_date > latest_sale_date:
+                latest_sale_date = item_latest_date
+                selected_item = item
+
     selected_formatted_item = st.sidebar.selectbox(
         "Select Item",
         options=sorted(items_data.keys()),
         format_func=format_option,
-        index=sorted(items_data.keys()).index("Golden Yank Hat Epic") if "Golden Yank Hat Epic" in items_data else 0
+        index=sorted(items_data.keys()).index(selected_item) if selected_item in sorted(items_data.keys()) else 0
     )
     
     show_trendline = st.sidebar.checkbox('Show Trend Line', value=False)
@@ -572,8 +589,8 @@ def main():
                     buyers_html = '<table class="sales-table"><tbody>'
                     for _, row in top_buyers.iterrows():
                         buyers_html += '<tr>'
-                        buyers_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["Address"])}" '
-                                      f'target="_blank">{shorten_address(row["Address"])}</a></td>')
+                        buyers_html += (f'<td class="link-cell"><a href="{format_opensea_link(row["Address"])}" target="_blank">'
+                                      f'{shorten_address(row["Address"])}</a></td>')
                         buyers_html += f'<td>{row["Purchases"]} purchases</td>'
                         buyers_html += '</tr>'
                     buyers_html += '</tbody></table>'
@@ -724,20 +741,21 @@ def main():
         st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
             
         # Handle pagination for the table
-        query_params = st.experimental_get_query_params()
-        page = int(query_params.get("page", [1])[0])
+        page = int(query_params.get("page", ["1"])[0])
 
         filtered_df = filtered_df.sort_values('sale_date', ascending=False)
 
         items_per_page = 10
         total_pages = len(filtered_df) // items_per_page + (1 if len(filtered_df) % items_per_page > 0 else 0)
+        if total_pages == 0:
+            total_pages = 1
 
         col1, col2 = st.columns([8, 2])
         with col2:
             page = st.number_input(
                 "Page",
                 min_value=1,
-                max_value=total_pages if total_pages > 0 else 1,
+                max_value=total_pages,
                 value=page if 1 <= page <= total_pages else 1,
                 step=1
             )
@@ -770,7 +788,7 @@ def main():
                         f'{shorten_address(row["buyer"])}</a></td>')
             table_html += (f'<td class="link-cell"><a href="{format_gunzscan_link(row["transaction_hash"])}" target="_blank">'
                         f'{shorten_address(row["transaction_hash"])}</a></td>')
-            table_html += (f'<td class="link-cell"><a href="{row["item_url"]}" target="_blank">View</a></td>')
+            table_html += (f'<td class="link-cell"><a href="{row["item_url"]}" target="_blank">OpenSea</a></td>')
             table_html += '</tr>'
 
         table_html += '</tbody></table>'
@@ -778,13 +796,10 @@ def main():
         st.markdown(table_html, unsafe_allow_html=True)
 
         # Donation Section - Modified Code
-        st.markdown("## 🙏 Support the Project")
-        st.markdown("Your support helps us continue the development and maintain the project. Any contribution would be greatly appreciated!")
-
-        wallet_address = "0x463dedf4b71cd7e94d661c359818f9cd2071991b"
-
-        # Display the wallet address as selectable text
-        st.markdown(f"**EVM Address:** `{wallet_address}`")
+        with st.expander("🙏 Support the Project"):
+            st.markdown("Your support helps us continue the development and maintain the project. Any contribution would be greatly appreciated!")
+            wallet_address = "0x463dedf4b71cd7e94d661c359818f9cd2071991b"
+            st.markdown(f"**EVM Address:** `{wallet_address}`")
 
         # Footer
         st.sidebar.markdown("""
