@@ -91,13 +91,13 @@ def shorten_address(address, length=8):
     if not isinstance(address, str):
         return address
     return f"{address[:length]}...{address[-length:]}"
-
+    
 def format_opensea_link(address):
     return f"https://opensea.io/{address}"
-
+    
 def format_gunzscan_link(tx_hash):
     return f"https://gunzscan.io/tx/{tx_hash}"
-
+    
 def format_number(number, show_usd=False, gun_price=0.03, currency='GUN', include_both=False):
     gun_formatted = ""
     usd_formatted = ""
@@ -424,7 +424,7 @@ def main():
         </style>
     """, unsafe_allow_html=True)
 
-    # Load data
+    # Загрузка данных
     items_data = load_all_data()
     current_gun_price = load_current_price()
     
@@ -443,7 +443,7 @@ def main():
             return f"{dots.get(rarity, '⚪')} {item_name.rsplit(' ', 1)[0]}"
         return f"⚪ {item_name}"
     
-    # Determine the selected item based on query params or latest sale
+    # Определение выбранного предмета на основе параметров запроса или последней продажи
     query_params = st.query_params
     selected_item = None
     if 'item' in query_params:
@@ -452,7 +452,7 @@ def main():
             selected_item = potential_item
 
     if not selected_item:
-        # Find the item with the latest sale
+        # Найти предмет с самой последней продажей
         latest_sale_date = None
         for item, details in items_data.items():
             item_latest_date = details['data']['sale_date'].max()
@@ -467,22 +467,20 @@ def main():
         index=sorted(items_data.keys()).index(selected_item) if selected_item in sorted(items_data.keys()) else 0
     )
     
-    show_trendline = st.sidebar.checkbox('Show Trend Line', value=False)
-    if show_trendline:
-        trend_type = 'Linear'  # Установлено значение по умолчанию
-        # Убраны элементы управления для выбора типа тренда и степени полинома
+    # Удалено: Checkbox для отображения трендовой линии
+    # show_trendline = st.sidebar.checkbox('Show Trend Line', value=False)
     
     show_volume = st.sidebar.checkbox('Show Volume', value=False)
     connect_dots = st.sidebar.checkbox('Connect Dots', value=False)
     
-    # Get data for the selected item
+    # Получение данных для выбранного предмета
     if selected_formatted_item in items_data:
         df = items_data[selected_formatted_item]['data'].copy()
     else:
         st.error(f"Selected item '{selected_formatted_item}' not found in the data.")
         return
     
-    # Convert date
+    # Конвертация даты
     df['sale_date'] = pd.to_datetime(df['sale_date'])
     
     min_date = df['sale_date'].min()
@@ -506,7 +504,7 @@ def main():
         if not filtered_df.empty and 'rarity' in filtered_df.columns:
             rarity = filtered_df['rarity'].iloc[0]
             color, rarity_class = get_rarity_style(rarity)
-            # Remove rarity from the item name if it is specified at the end
+            # Удаление редкости из имени предмета, если она указана в конце
             item_name = selected_formatted_item.rsplit(' ', 1)[0]
             st.markdown(f"""
                 <div class="rarity-container">
@@ -516,11 +514,11 @@ def main():
                 </div>
             """, unsafe_allow_html=True)
     
-        # Split data by types for visualization
+        # Разделение данных по типам для визуализации
         sales_df = filtered_df[filtered_df['type'] == 'GUN']
         offers_df = filtered_df[filtered_df['type'] == 'WGUN']
     
-        # Combined statistics
+        # Объединенная статистика
         combined_df = filtered_df.copy()
     
         info_col1, info_col2 = st.columns([1, 3])
@@ -591,43 +589,43 @@ def main():
                     buyers_html += '</tbody></table>'
                     st.markdown(buyers_html, unsafe_allow_html=True)
     
-        # Create the plot
+        # Создание графика
         fig = go.Figure()
 
-        # Combine GUN and WGUN data for line visualization
+        # Объединение данных GUN и WGUN для визуализации
         all_sales_df = pd.concat([sales_df, offers_df]).sort_values('sale_date')
 
-        # Define hover templates
+        # Определение шаблонов всплывающих подсказок
         hover_template_sales = "<br>".join([
             "Date: %{customdata[0]}",
-            "Price: %{customdata[1]}",  # Already includes 'GUN'
+            "Price: %{customdata[1]}",  # Уже включает 'GUN'
             "USD: %{customdata[2]}",
             "<extra></extra>"
         ])
 
         hover_template_offers = "<br>".join([
             "Date: %{customdata[0]}",
-            "Price: %{customdata[1]}",  # Already includes 'WGUN'
+            "Price: %{customdata[1]}",  # Уже включает 'WGUN'
             "USD: %{customdata[2]}",
             "<extra></extra>"
         ])
 
-        # Format prices
+        # Форматирование цен
         gun_prices_sales = [format_number(price, False, current_gun_price, currency='GUN') for price in sales_df['price_gun']]
         usd_prices_sales = [format_number(price, True, current_gun_price, currency='GUN') for price in sales_df['price_gun']]
 
         gun_prices_offers = [format_number(price, False, current_gun_price, currency='WGUN') for price in offers_df['price_gun']]
         usd_prices_offers = [format_number(price, True, current_gun_price, currency='WGUN') for price in offers_df['price_gun']]
 
-        # Define customdata
+        # Определение customdata
         customdata_sales = list(zip(sales_df['formatted_date'], gun_prices_sales, usd_prices_sales))
         customdata_offers = list(zip(offers_df['formatted_date'], gun_prices_offers, usd_prices_offers))
 
-        # Set marker modes
-        scatter_mode_sales = 'markers'  # Remove lines from individual traces
+        # Установка режимов маркеров
+        scatter_mode_sales = 'markers'  # Удаление линий из отдельных трасс
         scatter_mode_offers = 'markers'
 
-        # Add traces for regular sales (GUN)
+        # Добавление трасс для обычных продаж (GUN)
         if not sales_df.empty:
             fig.add_trace(go.Scatter(
                 x=sales_df['sale_date'],
@@ -639,21 +637,21 @@ def main():
                 customdata=customdata_sales
             ))
 
-        # Add traces for offer sales (WGUN)
+        # Добавление трасс для предложений продаж (WGUN)
         if not offers_df.empty:
             fig.add_trace(go.Scatter(
                 x=offers_df['sale_date'],
                 y=offers_df['price_gun'],
                 mode=scatter_mode_offers,
                 name='WGUN',
-                marker=dict(size=10, color='#FFD700'),  # Yellow color
+                marker=dict(size=10, color='#FFD700'),  # Желтый цвет
                 hovertemplate=hover_template_offers,
                 customdata=customdata_offers
             ))
 
-        # Add a connecting line if enabled
+        # Добавление соединяющей линии, если включено
         if connect_dots and not all_sales_df.empty:
-            # Sort for correct point connection
+            # Сортировка для правильного соединения точек
             all_sales_df_sorted = all_sales_df.sort_values('sale_date')
             fig.add_trace(go.Scatter(
                 x=all_sales_df_sorted['sale_date'],
@@ -661,10 +659,10 @@ def main():
                 mode='lines',
                 name='Connecting Line',
                 line=dict(color='red', width=2),
-                hoverinfo='skip'  # Disable hover for the line
+                hoverinfo='skip'  # Отключение всплывающих подсказок для линии
             ))
 
-        # Add sales volume
+        # Добавление объема продаж
         if show_volume:
             daily_volumes = combined_df.groupby(combined_df['sale_date'].dt.date).agg({
                 'price_gun': ['sum', 'count']
@@ -694,27 +692,7 @@ def main():
                 customdata=list(zip(daily_volumes['count'], volume_formatted))
             ))
 
-        # Add trend line if enabled
-        if show_trendline and len(combined_df) > 1:
-            trend_type = 'Linear'  # Используется только линейный тренд
-            x_numeric = (combined_df['sale_date'] - combined_df['sale_date'].min()).dt.total_seconds()
-            
-            slope, intercept, r_value, p_value, std_err = stats.linregress(x_numeric, combined_df['price_gun'])
-            trend_y = slope * x_numeric + intercept
-            
-            if abs(r_value) < 0.5:
-                st.sidebar.warning('⚠️ The trend line might be unreliable due to high price volatility and limited data.')
-            
-            fig.add_trace(go.Scatter(
-                x=combined_df['sale_date'],
-                y=trend_y,
-                mode='lines',
-                name='Trend',
-                line=dict(color='#00FF00', width=2, dash='dash'),
-                hoverinfo='skip'
-            ))
-
-        # Update plot layout
+        # Обновление оформления графика
         price_label = "Price (USD)" if show_usd else "Price (GUN / WGUN)"
         fig.update_layout(
             hovermode='closest',
@@ -732,7 +710,7 @@ def main():
 
         st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
             
-        # Handle pagination for the table
+        # Обработка пагинации для таблицы
         page = int(query_params.get("page", ["1"])[0])
 
         filtered_df = filtered_df.sort_values('sale_date', ascending=False)
@@ -787,7 +765,7 @@ def main():
 
         st.markdown(table_html, unsafe_allow_html=True)
 
-        # Donation Section - Modified Code
+        # Секция пожертвований
         with st.expander("🙏 Support the Project"):
             st.markdown("Your support helps us continue the development and maintain the project. Any contribution would be greatly appreciated!")
             wallet_address = "0x463dedf4b71cd7e94d661c359818f9cd2071991b"
