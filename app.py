@@ -423,7 +423,7 @@ def main():
         }
         </style>
     """, unsafe_allow_html=True)
-    
+
     # Load data
     items_data = load_all_data()
     current_gun_price = load_current_price()
@@ -469,13 +469,8 @@ def main():
     
     show_trendline = st.sidebar.checkbox('Show Trend Line', value=False)
     if show_trendline:
-        trend_type = st.sidebar.selectbox(
-            "Trend Type",
-            options=['Linear', 'Polynomial'],
-            index=0
-        )
-        if trend_type == 'Polynomial':
-            degree = st.sidebar.slider('Polynomial Degree', 2, 5, 2)
+        trend_type = 'Linear'  # Установлено значение по умолчанию
+        # Убраны элементы управления для выбора типа тренда и степени полинома
     
     show_volume = st.sidebar.checkbox('Show Volume', value=False)
     connect_dots = st.sidebar.checkbox('Connect Dots', value=False)
@@ -701,17 +696,14 @@ def main():
 
         # Add trend line if enabled
         if show_trendline and len(combined_df) > 1:
+            trend_type = 'Linear'  # Используется только линейный тренд
             x_numeric = (combined_df['sale_date'] - combined_df['sale_date'].min()).dt.total_seconds()
             
-            if trend_type == 'Linear':
-                slope, intercept, r_value, p_value, std_err = stats.linregress(x_numeric, combined_df['price_gun'])
-                trend_y = slope * x_numeric + intercept
-                
-                if abs(r_value) < 0.5:
-                    st.sidebar.warning('⚠️ The trend line might be unreliable due to high price volatility and limited data.')
-            else:
-                coeffs = np.polyfit(x_numeric, combined_df['price_gun'], degree)
-                trend_y = np.polyval(coeffs, x_numeric)
+            slope, intercept, r_value, p_value, std_err = stats.linregress(x_numeric, combined_df['price_gun'])
+            trend_y = slope * x_numeric + intercept
+            
+            if abs(r_value) < 0.5:
+                st.sidebar.warning('⚠️ The trend line might be unreliable due to high price volatility and limited data.')
             
             fig.add_trace(go.Scatter(
                 x=combined_df['sale_date'],
