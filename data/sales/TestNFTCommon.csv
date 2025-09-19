@@ -1,2 +1,0 @@
-sale_date,name,token_id,price_gun,rarity,seller,buyer,item_url,image_url,transaction_hash
-2025-09-20 12:00:00,Test NFT,9999999,1.0,Common,0xSellerAddress,0xBuyerAddress,http://example.com,http://example.com/image.png,0xTestTransactionHash1234567890abcdef
